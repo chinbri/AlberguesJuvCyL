@@ -3,7 +3,7 @@ package com.example.chin.domain.usecase.main
 import com.example.chin.data.gateways.MainLocalGateway
 import com.example.chin.data.gateways.MainNetworkGateway
 import com.example.chin.domain.entities.ObtainRechargePointsInputEntity
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.domain.usecase.AddressNotFoundNotification
 import com.example.chin.domain.usecase.InternalErrorNotification
 import com.example.chin.domain.usecase.ObtainRechargePointsUseCase
@@ -22,7 +22,7 @@ class ObtainRechargePointsUseCaseImpl @Inject constructor(override val job: Job,
                                                           @Named("datosAbiertosApiKey") private val datosAbiertosApiKey: String
 ): ObtainRechargePointsUseCase {
 
-    override suspend fun run(input: ObtainRechargePointsInputEntity): UseCaseResponse<List<RechargePointEntity>> {
+    override suspend fun run(input: ObtainRechargePointsInputEntity): UseCaseResponse<List<ShelterEntity>> {
 
         if(input.address?.isNotEmpty() == true){
 
@@ -67,7 +67,7 @@ class ObtainRechargePointsUseCaseImpl @Inject constructor(override val job: Job,
                     -it.distance
                 }
                 .map {
-                    RechargePointEntity.fromModel(it)
+                    ShelterEntity.fromModel(it)
                 })
         }catch (e: Exception){
             println(e.message)

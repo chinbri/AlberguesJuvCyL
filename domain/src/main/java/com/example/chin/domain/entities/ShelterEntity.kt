@@ -1,8 +1,8 @@
 package com.example.chin.domain.entities
 
-import com.example.chin.data.entities.RechargablePointModel
+import com.example.chin.data.entities.ShelterModel
 
-data class RechargePointEntity (
+data class ShelterEntity (
     val id: String,
     val name: String,
     val address: String,
@@ -13,11 +13,11 @@ data class RechargePointEntity (
     val distance: Float
 ){
     companion object {
-        fun fromModel(model: RechargablePointModel) = RechargePointEntity(
+        fun fromModel(model: ShelterModel) = ShelterEntity(
             model.identificador,
-            model.datospersonales ?: "---",
-            model.calle ?: "---",
-            model.nombre_del_organismo ?: "",
+            model.t_tulo ?: "---",
+            model.descripci_n ?: "---",
+            model.carta ?: "",
             model.enlace_al_contenido ?: "",
             model.posicion?.coordinates?.get(0) ?: 0.0,
             model.posicion?.coordinates?.get(1) ?: 0.0,

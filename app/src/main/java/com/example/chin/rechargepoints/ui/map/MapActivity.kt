@@ -8,7 +8,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.Toolbar
 import com.example.chin.domain.entities.MapDataEntity
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.presentation.map.MapPresenter
 import com.example.chin.presentation.map.MapScreenView
 import com.example.chin.rechargepoints.R
@@ -73,7 +73,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             Gson().fromJson<MapDataEntity>(
                 intent.getStringExtra(EXTRA_POINT_LIST),
                 MapDataEntity::class.java
-            ).rechargePointList
+            ).shelterList
         )
     }
 
@@ -83,7 +83,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         presenter.onMapReady()
     }
 
-    override fun setupMarkers(rechargePointsList: List<RechargePointEntity>){
+    override fun setupMarkers(rechargePointsList: List<ShelterEntity>){
 
         rechargePointsList.forEach {
             mMap.addMarker(
@@ -98,7 +98,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
     }
 
-    private fun moveCamera(rechargePointsList: List<RechargePointEntity>){
+    private fun moveCamera(rechargePointsList: List<ShelterEntity>){
         val builder = LatLngBounds.Builder()
         for (point in rechargePointsList) {
             builder.include(LatLng(point.latitude, point.longitude))
@@ -133,25 +133,25 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
 
 
-    override fun showRechargePointData(rechargePointEntity: RechargePointEntity) {
+    override fun showRechargePointData(shelterEntity: ShelterEntity) {
 
         showFooter()
 
-        tvName.text = rechargePointEntity.name
-        tvAddress.text = rechargePointEntity.address
-        tvDescription.text = rechargePointEntity.description
-        tvDistance.text = resources.getString(com.example.chin.rechargepoints.R.string.distance_label_km, rechargePointEntity.distance)
+        tvName.text = shelterEntity.name
+        tvAddress.text = shelterEntity.address
+        tvDescription.text = shelterEntity.description
+        tvDistance.text = resources.getString(com.example.chin.rechargepoints.R.string.distance_label_km, shelterEntity.distance)
 
-        if(rechargePointEntity.url.isNotEmpty()){
+        if(shelterEntity.url.isNotEmpty()){
             ivInfo.setOnClickListener {
-                presenter.onInfoClicked(rechargePointEntity)
+                presenter.onInfoClicked(shelterEntity)
             }
         }else{
             ivInfo.visibility = View.GONE
         }
 
         ivNavigation.setOnClickListener{
-            presenter.onNavigationClicked(rechargePointEntity)
+            presenter.onNavigationClicked(shelterEntity)
         }
 
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Puntos de recarga CyL</string>
+    <string name="app_name">Albergues juveniles CyL</string>
     <string name="location_permission_needed">Debe proporcionar permisos de localización a la app para obtener los
         puntos de recarga cercanos a su posición
     </string>

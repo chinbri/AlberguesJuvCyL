@@ -1,5 +1,5 @@
 package com.example.chin.domain
 
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 
-typealias AddItemListener = (RechargePointEntity) -> Unit
+typealias AddItemListener = (ShelterEntity) -> Unit

@@ -2,9 +2,9 @@ package com.example.chin.domain.usecase
 
 import com.example.chin.domain.entities.CachedRechargePointsDataEntity
 import com.example.chin.domain.entities.ObtainRechargePointsInputEntity
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 
-interface ObtainRechargePointsUseCase: UseCase<ObtainRechargePointsInputEntity, List<RechargePointEntity>>
+interface ObtainRechargePointsUseCase: UseCase<ObtainRechargePointsInputEntity, List<ShelterEntity>>
 
 interface GetCachedRechargePointsUseCase: UseCase<Unit, CachedRechargePointsDataEntity>
 

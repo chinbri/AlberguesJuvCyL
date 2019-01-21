@@ -2,7 +2,7 @@ package com.example.chin.presentation.main
 
 import com.example.chin.domain.entities.MapDataEntity
 import com.example.chin.domain.entities.ObtainRechargePointsInputEntity
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.domain.usecase.GetCachedRechargePointsUseCase
 import com.example.chin.domain.usecase.ObtainRechargePointsUseCase
 import com.example.chin.presentation.main.navigator.Navigator
@@ -16,7 +16,7 @@ class MainPresenterImpl @Inject constructor(
 
     lateinit var view: MainView
     var lastAddress: String? = null
-    var rechargePointList: List<RechargePointEntity> = emptyList()
+    var shelterList: List<ShelterEntity> = emptyList()
 
     override fun initialize(view: MainView) {
         this.view = view
@@ -38,11 +38,11 @@ class MainPresenterImpl @Inject constructor(
             view.showLoadingFooter(false)
 
 
-            rechargePointList = it.output ?: emptyList()
+            shelterList = it.output ?: emptyList()
             lastAddress = null
 
             showAddressOrHideIfNull()
-            view.drawList(rechargePointList)
+            view.drawList(shelterList)
 
             view.showSearchOkMessage()
         }
@@ -51,20 +51,20 @@ class MainPresenterImpl @Inject constructor(
 
     private fun getCachedRechargePoints(){
         getCachedRechargePointsUseCase.executeAsync(Unit){
-            rechargePointList = it.output?.pointList ?: emptyList()
+            shelterList = it.output?.pointList ?: emptyList()
             lastAddress = it.output?.lastAddress
             showAddressOrHideIfNull()
-            view.drawList(rechargePointList)
+            view.drawList(shelterList)
         }
     }
 
-    override fun onNavigationSelected(it: RechargePointEntity) {
+    override fun onNavigationSelected(it: ShelterEntity) {
 
         navigator.goToNavigation(it)
 
     }
 
-    override fun onInfoClicked(point: RechargePointEntity) {
+    override fun onInfoClicked(point: ShelterEntity) {
 
         navigator.openUrl(point.url)
 
@@ -72,7 +72,7 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onFabMapClicked() {
 
-        navigator.goToMapScreen(MapDataEntity(rechargePointList))
+        navigator.goToMapScreen(MapDataEntity(shelterList))
 
     }
 
@@ -95,8 +95,8 @@ class MainPresenterImpl @Inject constructor(
 
                 }else{
 
-                    rechargePointList = it.output ?: emptyList()
-                    view.drawList(rechargePointList)
+                    shelterList = it.output ?: emptyList()
+                    view.drawList(shelterList)
 
                     showAddressOrHideIfNull()
                     view.showSearchOkMessage()

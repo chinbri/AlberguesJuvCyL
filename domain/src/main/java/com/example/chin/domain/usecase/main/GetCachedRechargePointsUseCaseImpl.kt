@@ -2,7 +2,7 @@ package com.example.chin.domain.usecase.main
 
 import com.example.chin.data.gateways.MainLocalGateway
 import com.example.chin.domain.entities.CachedRechargePointsDataEntity
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.domain.usecase.GetCachedRechargePointsUseCase
 import com.example.chin.domain.usecase.InternalErrorNotification
 import com.example.chin.domain.usecase.UseCaseResponse
@@ -25,7 +25,7 @@ class GetCachedRechargePointsUseCaseImpl @Inject constructor(
                     mainLocalGateway.getRechargePoints()
                         .sortedByDescending { -it.distance }
                         .map {
-                            RechargePointEntity.fromModel(it)
+                            ShelterEntity.fromModel(it)
                         },
                     preferenceUtils.getLastAddress()
                 )

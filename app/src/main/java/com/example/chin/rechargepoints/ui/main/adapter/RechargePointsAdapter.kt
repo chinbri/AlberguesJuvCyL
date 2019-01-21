@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.presentation.main.ListActions
 import com.example.chin.rechargepoints.R
 
-typealias RechargePointsAdapterListener = (rechargePointEntity: RechargePointEntity, action: ListActions) -> Unit
+typealias RechargePointsAdapterListener = (shelterEntity: ShelterEntity, action: ListActions) -> Unit
 
 class RechargePointsAdapter(
-    var rechargePointList: List<RechargePointEntity> = emptyList(),
+    var shelterList: List<ShelterEntity> = emptyList(),
     val listener: RechargePointsAdapterListener
 ): RecyclerView.Adapter<RechargePointItemViewHolder>() {
 
@@ -23,17 +23,17 @@ class RechargePointsAdapter(
         )
     }
 
-    override fun getItemCount() = rechargePointList.size
+    override fun getItemCount() = shelterList.size
 
     override fun onBindViewHolder(viewHolder: RechargePointItemViewHolder, position: Int) {
-        viewHolder.bind(rechargePointList[position], listener)
+        viewHolder.bind(shelterList[position], listener)
     }
 }
 
 class RechargePointItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     fun bind(
-        pointEntity: RechargePointEntity,
+        pointEntity: ShelterEntity,
         listener: RechargePointsAdapterListener
     ){
 

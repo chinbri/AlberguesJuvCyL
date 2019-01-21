@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.chin.data.entities.RechargablePointModel
+import com.example.chin.data.entities.ShelterModel
 
 
 @Dao
@@ -16,7 +16,7 @@ interface RechargePointsDao {
     }
 
     @Query("SELECT * FROM $TABLE_NAME")
-    fun getAll(): List<RechargablePointModel>
+    fun getAll(): List<ShelterModel>
 //
 //    @Query("SELECT * FROM $TABLE_NAME WHERE name IN (:userNames)")
 //    fun loadAllByIds(userNames: StringArray): List<ShoppingLocalEntity>
@@ -25,10 +25,10 @@ interface RechargePointsDao {
 //    fun findByName(name: String): ShoppingLocalEntity
 
     @Insert
-    fun insertAll(rechargePoints: List<RechargablePointModel>)
+    fun insertAll(rechargePoints: List<ShelterModel>)
 
     @Delete
-    fun delete(item: RechargablePointModel)
+    fun delete(item: ShelterModel)
 
     @Query("DELETE FROM $TABLE_NAME")
     fun deleteAll()

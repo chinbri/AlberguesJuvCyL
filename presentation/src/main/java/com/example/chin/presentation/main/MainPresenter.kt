@@ -1,6 +1,6 @@
 package com.example.chin.presentation.main
 
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 
 enum class ListActions {
     INFO, NAVIGATION
@@ -12,9 +12,9 @@ interface MainPresenter {
 
     fun initialize(view: MainView)
 
-    fun onNavigationSelected(it: RechargePointEntity)
+    fun onNavigationSelected(it: ShelterEntity)
 
-    fun onInfoClicked(point: RechargePointEntity)
+    fun onInfoClicked(point: ShelterEntity)
 
     fun onSearchByAddressClicked()
 

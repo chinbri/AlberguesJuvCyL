@@ -5,10 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.chin.data.dao.RechargePointsDao
 import com.example.chin.data.dao.address.AddressDao
-import com.example.chin.data.entities.RechargablePointModel
+import com.example.chin.data.entities.ShelterModel
 import com.example.chin.data.entities.address.AddressModel
 
-@Database(entities = [RechargablePointModel::class, AddressModel::class], version = 1)
+@Database(entities = [ShelterModel::class, AddressModel::class], version = 1)
 @TypeConverters(
     CoordinateTypeConverter::class,
     DateTypeConverter::class

@@ -1,6 +1,6 @@
 package com.example.chin.presentation.map
 
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.presentation.main.navigator.Navigator
 import javax.inject.Inject
 
@@ -9,9 +9,9 @@ class MapPresenterImpl @Inject constructor(
 ): MapPresenter {
 
     lateinit var view: MapScreenView
-    lateinit var rechargePointsList: List<RechargePointEntity>
+    lateinit var rechargePointsList: List<ShelterEntity>
 
-    override fun initialize(mapScreenView: MapScreenView, rechargePointsList: List<RechargePointEntity>) {
+    override fun initialize(mapScreenView: MapScreenView, rechargePointsList: List<ShelterEntity>) {
         this.view = mapScreenView
         this.rechargePointsList = rechargePointsList
     }
@@ -34,11 +34,11 @@ class MapPresenterImpl @Inject constructor(
         )
     }
 
-    override fun onInfoClicked(pointEntity: RechargePointEntity) {
+    override fun onInfoClicked(pointEntity: ShelterEntity) {
         navigator.openUrl(pointEntity.url)
     }
 
-    override fun onNavigationClicked(pointEntity: RechargePointEntity) {
+    override fun onNavigationClicked(pointEntity: ShelterEntity) {
         navigator.goToNavigation(pointEntity)
     }
 }

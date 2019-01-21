@@ -1,12 +1,12 @@
 package com.example.chin.presentation.main
 
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 
 interface MainView {
 
     fun showMessage(message: String)
 
-    fun drawList(items: List<RechargePointEntity>)
+    fun drawList(items: List<ShelterEntity>)
     fun showSearchOkMessage()
     fun showAddresNotFoundMessage()
 

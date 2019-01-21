@@ -12,7 +12,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chin.domain.entities.RechargePointEntity
+import com.example.chin.domain.entities.ShelterEntity
 import com.example.chin.presentation.main.ListActions
 import com.example.chin.presentation.main.MainPresenter
 import com.example.chin.presentation.main.MainView
@@ -40,7 +40,7 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private val adapter = RechargePointsAdapter{
-            point: RechargePointEntity,
+            point: ShelterEntity,
             action: ListActions ->
         run {
             when (action) {
@@ -162,8 +162,8 @@ class MainActivity : BaseActivity(), MainView {
         showMessage(resources.getString(R.string.search_points_ok))
     }
 
-    override fun drawList(items: List<RechargePointEntity>) {
-        adapter.rechargePointList = items
+    override fun drawList(items: List<ShelterEntity>) {
+        adapter.shelterList = items
         adapter.notifyDataSetChanged()
         if(items.isNotEmpty()){
             fabMap.show()
