@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Puntos de recarga CyL</string>
+    <string name="location_permission_needed">Debe proporcionar permisos de localización a la app para obtener los
+        puntos de recarga cercanos a su posición
+    </string>
+    <string name="location_desabled_warning">Debe habilitar la localización para obtener los puntos de recarga
+        cercanos
+    </string>
+    <string name="searching_position_message">Buscando puntos de recarga…</string>
+    <string name="cancel">Cancelar</string>
+    <string name="search_rechage_points">Cercanos</string>
+    <string name="cancelled_search">Búsqueda cancelada</string>
+    <string name="distance">Distancia (aprox.):</string>
+    <string name="search_points_ok">Búsqueda finalizada</string>
+    <string name="search_by_address">Por dirección</string>
+    <string name="search">Buscar:</string>
+    <string name="introduce_address">Dirección a buscar</string>
+    <string name="hint_address">Calle número localidad CP…</string>
+    <string name="accept">Aceptar</string>
+    <string name="cant_find_address">No se ha podido encontrar la dirección</string>
+    <string name="current_address">Dirección: %s</string>
+    <string name="title_activity_map">Map</string>
+    <string name="distance_label_km">%.1f Km</string>
+    <string name="settings">Ajustes</string>
+    <string name="about">Acerca de</string>
+    <string name="search_ratio">Radio de búsqueda (en KM)</string>
+    <string name="ratio_limit">1-200 Km</string>
+    <string name="seach_ratio_error">Debe introducir un valor entre 1 y 200</string>
+    <string name="no_results">No hay resultados</string>
+    <string name="main_title">Buscador de puntos de recarga</string>
+    <string name="version_label">Versión %s</string>
+</resources>

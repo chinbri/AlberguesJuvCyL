@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply from: "../libraries.gradle"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.chinsoft.recharge.cyl"
+        minSdkVersion 17
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //libraries
+    implementation libraries.kotlin
+    implementation libraries.kotlin_coroutines_core
+    implementation libraries.kotlin_coroutines_android
+    implementation libraries.app_compat
+    implementation libraries.constraint_layout
+    implementation libraries.recycler_view
+    implementation libraries.dagger
+    kapt libraries.dagger_compiler
+    implementation libraries.room_runtime
+    kapt libraries.room_compiler
+    implementation libraries.room_coroutines
+    implementation libraries.retrofit
+    implementation libraries.retrofit_gson
+    implementation libraries.retrofit_coroutines_adapter
+    implementation libraries.retrofit_logging_interceptor
+    implementation libraries.dexter
+    implementation libraries.location
+    implementation libraries.maps
+    implementation libraries.material
+
+    //test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //modules
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':domain')
+}

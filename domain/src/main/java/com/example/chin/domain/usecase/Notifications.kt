@@ -1,0 +1,6 @@
+package com.example.chin.domain.usecase
+
+interface UseCaseNotification
+
+class InternalErrorNotification: UseCaseNotification
+class AddressNotFoundNotification: UseCaseNotification

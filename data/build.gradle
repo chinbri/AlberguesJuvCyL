@@ -1,0 +1,23 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: "../libraries.gradle"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation 'junit:junit:4.12'
+    implementation libraries.kotlin
+    implementation libraries.kotlin_coroutines_core
+    implementation libraries.kotlin_coroutines_android
+    implementation libraries.java_inject
+
+    implementation libraries.room_runtime
+    implementation libraries.room_compiler
+    implementation libraries.room_coroutines
+    implementation libraries.retrofit
+    implementation libraries.retrofit_gson
+    implementation libraries.retrofit_coroutines_adapter
+    implementation libraries.retrofit_logging_interceptor
+
+}
