@@ -57,7 +57,10 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_map)
+
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
 
         setSupportActionBar(customToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -82,6 +85,11 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
                 MapDataEntity::class.java
             ).shelterList
         )
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_out_back, R.anim.slide_in_back)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
