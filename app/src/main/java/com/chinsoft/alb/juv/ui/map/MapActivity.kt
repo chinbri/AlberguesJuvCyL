@@ -186,13 +186,13 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
     private fun setupImageGallery(shelterEntity: ShelterEntity) {
-        if (shelterEntity.images.isNullOrEmpty()) {
+        if (shelterEntity.obtainImages().isNullOrEmpty()) {
             wrapperImages.visibility = View.GONE
             wrapperNoImages.visibility = View.VISIBLE
         } else {
             wrapperImages.visibility = View.VISIBLE
             wrapperNoImages.visibility = View.GONE
-            pager.adapter = ImageAdapter(this, shelterEntity.images!!.split(", "))
+            pager.adapter = ImageAdapter(this, shelterEntity.obtainImages())
         }
     }
 

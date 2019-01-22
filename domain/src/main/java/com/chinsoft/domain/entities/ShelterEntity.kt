@@ -11,6 +11,7 @@ data class ShelterEntity (
     val longitude: Double,
     val latitude: Double,
     val images: String?,
+    val mainImage: String?,
     val distance: Float
 ){
     companion object {
@@ -23,8 +24,22 @@ data class ShelterEntity (
             model.posicion?.coordinates?.get(0) ?: 0.0,
             model.posicion?.coordinates?.get(1) ?: 0.0,
             model.imagenes_asociadas,
+            model.imagen,
             model.distance
         )
+    }
+
+    fun obtainImages(): List<String>{
+        val wholeList = emptyList<String>().toMutableList()
+
+        if(!mainImage.isNullOrEmpty()){
+            wholeList.add(mainImage)
+        }
+        if(!images.isNullOrEmpty()){
+            wholeList.addAll(images.split(", "))
+        }
+
+        return wholeList
     }
 
 }
