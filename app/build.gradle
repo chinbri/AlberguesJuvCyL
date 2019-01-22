@@ -11,7 +11,7 @@ apply from: "../libraries.gradle"
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.chinsoft.alb.jub.cyl"
+        applicationId "com.chinsoft.alb.juv"
         minSdkVersion 17
         targetSdkVersion 28
         multiDexEnabled true

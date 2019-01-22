@@ -1,4 +1,4 @@
-package com.example.chin.domain;
+package com.chinsoft.domain;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

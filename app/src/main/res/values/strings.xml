@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Albergues juveniles CyL</string>
+    <string name="app_name">Pruebas DDF</string>
     <string name="location_permission_needed">Debe proporcionar permisos de localización a la app para obtener los
         puntos de recarga cercanos a su posición
     </string>
     <string name="location_desabled_warning">Debe habilitar la localización para obtener los puntos de recarga
         cercanos
     </string>
-    <string name="searching_position_message">Buscando puntos de recarga…</string>
+    <string name="searching_position_message">Buscando…</string>
     <string name="cancel">Cancelar</string>
     <string name="search_rechage_points">Cercanos</string>
     <string name="cancelled_search">Búsqueda cancelada</string>
@@ -27,6 +27,6 @@
     <string name="ratio_limit">1-200 Km</string>
     <string name="seach_ratio_error">Debe introducir un valor entre 1 y 200</string>
     <string name="no_results">No hay resultados</string>
-    <string name="main_title">Buscador de puntos de recarga</string>
+    <string name="main_title">Buscador de albergues</string>
     <string name="version_label">Versión %s</string>
 </resources>
