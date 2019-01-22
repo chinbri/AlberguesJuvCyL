@@ -30,21 +30,21 @@
                 android:layout_marginTop="16dp"/>
 
         <Button
-                android:id="@+id/btnFindAllRechargePoints"
+                android:id="@+id/btnFindAll"
                 style="@style/Button"
                 android:text="@string/search_all"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/btnFindNearRechargePoints"
-                app:layout_constraintTop_toTopOf="@+id/btnFindNearRechargePoints"
-                app:layout_constraintBottom_toBottomOf="@+id/btnFindNearRechargePoints"/>
+                app:layout_constraintEnd_toStartOf="@+id/btnFindNear"
+                app:layout_constraintTop_toTopOf="@+id/btnFindNear"
+                app:layout_constraintBottom_toBottomOf="@+id/btnFindNear"/>
 
         <Button
-                android:id="@+id/btnFindNearRechargePoints"
+                android:id="@+id/btnFindNear"
                 style="@style/Button"
                 android:text="@string/search_rechage_points"
                 app:layout_constraintTop_toBottomOf="@+id/labelSearch"
-                app:layout_constraintStart_toEndOf="@id/btnFindAllRechargePoints"
+                app:layout_constraintStart_toEndOf="@id/btnFindAll"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/btnFindByAddress"
@@ -54,11 +54,11 @@
                 android:id="@+id/btnFindByAddress"
                 style="@style/Button"
                 android:text="@string/search_by_address"
-                app:layout_constraintTop_toTopOf="@+id/btnFindNearRechargePoints"
-                app:layout_constraintBottom_toBottomOf="@+id/btnFindNearRechargePoints"
+                app:layout_constraintTop_toTopOf="@+id/btnFindNear"
+                app:layout_constraintBottom_toBottomOf="@+id/btnFindNear"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toEndOf="@+id/btnFindNearRechargePoints"
+                app:layout_constraintStart_toEndOf="@+id/btnFindNear"
                 />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

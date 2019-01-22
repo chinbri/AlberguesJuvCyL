@@ -3,7 +3,7 @@ package com.chinsoft.alb.juv.di.network
 import com.chinsoft.alb.juv.BuildConfig
 import com.chinsoft.data.network.ApiService
 import com.chinsoft.data.network.ApiServiceImpl
-import com.chinsoft.data.network.RechargePointsApi
+import com.chinsoft.data.network.SheltersApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -48,7 +48,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRechargePointsApi(retrofit: Retrofit.Builder) = retrofit.build().create(RechargePointsApi::class.java)
+    fun providesRechargePointsApi(retrofit: Retrofit.Builder) = retrofit.build().create(SheltersApi::class.java)
 
 
 }

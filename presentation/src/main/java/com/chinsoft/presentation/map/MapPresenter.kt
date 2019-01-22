@@ -4,7 +4,7 @@ import com.chinsoft.domain.entities.ShelterEntity
 
 interface MapPresenter {
 
-    fun initialize(mapScreenView: MapScreenView, rechargePointsList: List<ShelterEntity>)
+    fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>)
 
     fun onMapReady()
 

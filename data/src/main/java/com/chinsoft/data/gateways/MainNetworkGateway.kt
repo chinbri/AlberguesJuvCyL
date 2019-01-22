@@ -4,11 +4,11 @@ import com.chinsoft.data.entities.ShelterModel
 
 interface MainNetworkGateway {
 
-    suspend fun getAllRechargePoints(
+    suspend fun getAllShelters(
         apiToken: String
     ): List<ShelterModel>
 
-    suspend fun getRechargePointsFromPosition(
+    suspend fun getSheltersFromPosition(
         latitude: Double,
         longitude: Double,
         ratio: Long,

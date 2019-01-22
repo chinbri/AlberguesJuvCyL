@@ -21,7 +21,7 @@ class ActivityModule(private val activity: BaseActivity) {
     }
 
     private val shoppingDao by lazy {
-        roomDatabase.rechargePointsDao()
+        roomDatabase.sheltersDao()
     }
 
     private val addressDao by lazy {

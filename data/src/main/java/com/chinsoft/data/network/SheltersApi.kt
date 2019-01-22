@@ -5,7 +5,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RechargePointsApi {
+interface SheltersApi {
 
     @GET("3f5r-8hut.json")
     fun getAllShelters(

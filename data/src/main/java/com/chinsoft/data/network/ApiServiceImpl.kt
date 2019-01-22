@@ -4,7 +4,7 @@ import com.chinsoft.data.entities.RechargablePointsRequestModel
 import com.chinsoft.data.entities.ShelterModel
 import javax.inject.Inject
 
-class ApiServiceImpl @Inject constructor(val api: RechargePointsApi): ApiService {
+class ApiServiceImpl @Inject constructor(val api: SheltersApi): ApiService {
 
 
     override suspend fun obtainAllPoints(apiToken: String): List<ShelterModel>? {

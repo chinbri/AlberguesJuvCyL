@@ -1,23 +1,23 @@
 package com.chinsoft.data.gateways
 
-import com.chinsoft.data.dao.RechargePointsDao
+import com.chinsoft.data.dao.SheltersDao
 import com.chinsoft.data.entities.ShelterModel
 import javax.inject.Inject
 
 class MainLocalGatewayImpl @Inject constructor(
-    val rechargePointsDao: RechargePointsDao
+    val sheltersDao: SheltersDao
 ): MainLocalGateway {
 
-    override suspend fun getRechargePoints() = rechargePointsDao.getAll()
+    override suspend fun getShelterList() = sheltersDao.getAll()
 
     override suspend fun insertAll(points: List<ShelterModel>) {
-        rechargePointsDao.insertAll(points)
+        sheltersDao.insertAll(points)
     }
 
-    override suspend fun deleteItem(item: ShelterModel) = rechargePointsDao.delete(item)
+    override suspend fun deleteItem(item: ShelterModel) = sheltersDao.delete(item)
 
     override suspend fun deleteAll() {
-        rechargePointsDao.deleteAll()
+        sheltersDao.deleteAll()
     }
 
 }

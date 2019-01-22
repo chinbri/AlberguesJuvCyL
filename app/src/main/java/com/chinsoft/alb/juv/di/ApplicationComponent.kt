@@ -1,7 +1,7 @@
 package com.chinsoft.alb.juv.di
 
 import com.chinsoft.domain.util.PreferenceUtils
-import com.chinsoft.alb.juv.RechargePointsApplication
+import com.chinsoft.alb.juv.ShelterApplication
 import com.chinsoft.alb.juv.di.network.NetworkComponent
 import com.chinsoft.alb.juv.di.network.NetworkModule
 import dagger.Component
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Singleton
 interface ApplicationComponent: NetworkComponent {
 
-    fun inject(application: RechargePointsApplication)
+    fun inject(application: ShelterApplication)
 
     @Named("datosAbiertosApiKey")
     fun provideDatosAbiertosApiKey(): String

@@ -8,24 +8,18 @@ import com.chinsoft.data.entities.ShelterModel
 
 
 @Dao
-interface RechargePointsDao {
+interface SheltersDao {
 
     companion object {
-        const val TABLE_NAME = "rechargePoints"
+        const val TABLE_NAME = "shelters"
         const val COLUMN_ID = "id"
     }
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAll(): List<ShelterModel>
-//
-//    @Query("SELECT * FROM $TABLE_NAME WHERE name IN (:userNames)")
-//    fun loadAllByIds(userNames: StringArray): List<ShoppingLocalEntity>
-//
-//    @Query("SELECT * FROM $TABLE_NAME WHERE name LIKE :name LIMIT 1")
-//    fun findByName(name: String): ShoppingLocalEntity
 
     @Insert
-    fun insertAll(rechargePoints: List<ShelterModel>)
+    fun insertAll(shelterList: List<ShelterModel>)
 
     @Delete
     fun delete(item: ShelterModel)

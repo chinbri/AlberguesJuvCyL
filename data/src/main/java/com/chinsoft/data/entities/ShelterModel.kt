@@ -4,12 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.chinsoft.data.dao.RechargePointsDao
+import com.chinsoft.data.dao.SheltersDao
 
-@Entity(tableName = RechargePointsDao.TABLE_NAME)
+@Entity(tableName = SheltersDao.TABLE_NAME)
 data class ShelterModel(
     @PrimaryKey
-    @ColumnInfo(name = RechargePointsDao.COLUMN_ID)
+    @ColumnInfo(name = SheltersDao.COLUMN_ID)
     val identificador: String,
     val capacidad: String?,
     val carta: String?,
@@ -25,6 +25,6 @@ data class ShelterModel(
     val regimenprecio: String?,
     val t_tulo: String?,
     @Embedded
-    val posicion: RechargePointsPositionModel?,
+    val posicion: PositionModel?,
     var distance: Float
 )

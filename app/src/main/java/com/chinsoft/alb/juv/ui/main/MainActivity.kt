@@ -19,7 +19,7 @@ import com.chinsoft.presentation.main.MainView
 import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.di.main.MainModule
 import com.chinsoft.alb.juv.ui.BaseActivity
-import com.chinsoft.alb.juv.ui.main.adapter.RechargePointsAdapter
+import com.chinsoft.alb.juv.ui.main.adapter.ShelterAdapter
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.karumi.dexter.Dexter
@@ -40,8 +40,8 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private val adapter =
-        RechargePointsAdapter { point: ShelterEntity,
-                                                                                        action: ListActions ->
+        ShelterAdapter { point: ShelterEntity,
+                         action: ListActions ->
             run {
                 when (action) {
                     ListActions.INFO -> presenter.onInfoClicked(point)
@@ -87,13 +87,13 @@ class MainActivity : BaseActivity(), MainView {
         val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_alpha)
         rvRechagePoints.layoutAnimation = animation
 
-        btnFindAllRechargePoints.setOnClickListener {
+        btnFindAll.setOnClickListener {
 
             presenter.onSearchAllClicked()
 
         }
 
-        btnFindNearRechargePoints.setOnClickListener{
+        btnFindNear.setOnClickListener{
             Dexter
                 .withActivity(this)
                 .withPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -131,7 +131,7 @@ class MainActivity : BaseActivity(), MainView {
             override fun onLocationResult(locationResult: LocationResult?) {
                 locationResult ?: return
 
-                presenter.obtainNearRechargePoints(
+                presenter.obtainNearShelters(
                     locationResult.lastLocation.latitude,
                     locationResult.lastLocation.longitude
                 )

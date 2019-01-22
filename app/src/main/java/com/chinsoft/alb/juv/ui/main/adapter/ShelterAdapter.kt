@@ -11,31 +11,31 @@ import com.chinsoft.domain.entities.ShelterEntity
 import com.chinsoft.presentation.main.ListActions
 import com.chinsoft.alb.juv.R
 
-typealias RechargePointsAdapterListener = (shelterEntity: ShelterEntity, action: ListActions) -> Unit
+typealias ShelterAdapterListener = (shelterEntity: ShelterEntity, action: ListActions) -> Unit
 
-class RechargePointsAdapter(
+class ShelterAdapter(
     var shelterList: List<ShelterEntity> = emptyList(),
-    private val listener: RechargePointsAdapterListener
-): RecyclerView.Adapter<RechargePointItemViewHolder>() {
+    private val listener: ShelterAdapterListener
+): RecyclerView.Adapter<ShelterItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, index: Int): RechargePointItemViewHolder {
-        return RechargePointItemViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, index: Int): ShelterItemViewHolder {
+        return ShelterItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
         )
     }
 
     override fun getItemCount() = shelterList.size
 
-    override fun onBindViewHolder(viewHolder: RechargePointItemViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ShelterItemViewHolder, position: Int) {
         viewHolder.bind(shelterList[position], listener)
     }
 }
 
-class RechargePointItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+class ShelterItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     fun bind(
         pointEntity: ShelterEntity,
-        listener: RechargePointsAdapterListener
+        listener: ShelterAdapterListener
     ){
         itemView.setOnClickListener {
             listener.invoke(pointEntity, ListActions.SELECTION)

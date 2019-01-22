@@ -4,10 +4,10 @@ import com.chinsoft.data.gateways.MainLocalGateway
 import com.chinsoft.data.gateways.MainLocalGatewayImpl
 import com.chinsoft.data.gateways.MainNetworkGateway
 import com.chinsoft.data.gateways.MainNetworkGatewayImpl
-import com.chinsoft.domain.usecase.GetCachedRechargePointsUseCase
-import com.chinsoft.domain.usecase.ObtainRechargePointsUseCase
-import com.chinsoft.domain.usecase.main.GetCachedRechargePointsUseCaseImpl
-import com.chinsoft.domain.usecase.main.ObtainRechargePointsUseCaseImpl
+import com.chinsoft.domain.usecase.GetCachedSheltersUseCase
+import com.chinsoft.domain.usecase.ObtainSheltersUseCase
+import com.chinsoft.domain.usecase.main.GetCachedSheltersUseCaseImpl
+import com.chinsoft.domain.usecase.main.ObtainSheltersUseCaseImpl
 import com.chinsoft.domain.util.LocationUtils
 import com.chinsoft.presentation.main.MainPresenter
 import com.chinsoft.presentation.main.MainPresenterImpl
@@ -24,7 +24,7 @@ class MainModule {
 
     @Provides
     @MainScope
-    fun providesMainUseCase(impl: ObtainRechargePointsUseCaseImpl): ObtainRechargePointsUseCase = impl
+    fun providesMainUseCase(impl: ObtainSheltersUseCaseImpl): ObtainSheltersUseCase = impl
 
     @Provides
     @MainScope
@@ -36,7 +36,7 @@ class MainModule {
 
     @Provides
     @MainScope
-    fun providesGetCachedRechargePointsUseCase(impl: GetCachedRechargePointsUseCaseImpl): GetCachedRechargePointsUseCase = impl
+    fun providesGetCachedSheltersUseCase(impl: GetCachedSheltersUseCaseImpl): GetCachedSheltersUseCase = impl
 
     @Provides
     @MainScope

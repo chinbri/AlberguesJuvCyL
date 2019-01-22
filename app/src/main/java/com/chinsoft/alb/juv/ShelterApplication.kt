@@ -5,7 +5,7 @@ import com.chinsoft.alb.juv.di.ApplicationComponent
 import com.chinsoft.alb.juv.di.ApplicationModule
 import com.chinsoft.alb.juv.di.DaggerApplicationComponent
 
-class RechargePointsApplication: Application() {
+class ShelterApplication: Application() {
 
     lateinit var applicationComponent: ApplicationComponent
 

@@ -9,21 +9,21 @@ class MapPresenterImpl @Inject constructor(
 ): MapPresenter {
 
     lateinit var view: MapScreenView
-    lateinit var rechargePointsList: List<ShelterEntity>
+    lateinit var shelterList: List<ShelterEntity>
 
-    override fun initialize(mapScreenView: MapScreenView, rechargePointsList: List<ShelterEntity>) {
+    override fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>) {
         this.view = mapScreenView
-        this.rechargePointsList = rechargePointsList
+        this.shelterList = shelterList
     }
 
     override fun onMapReady() {
 
-        if(rechargePointsList.isNotEmpty()){
+        if(shelterList.isNotEmpty()){
 
-            view.setupMarkers(rechargePointsList)
+            view.setupMarkers(shelterList)
 
-            if(rechargePointsList.size == 1){
-                onMarkerClicked(rechargePointsList[0].id)
+            if(shelterList.size == 1){
+                onMarkerClicked(shelterList[0].id)
             }
 
         }
@@ -31,8 +31,8 @@ class MapPresenterImpl @Inject constructor(
     }
 
     override fun onMarkerClicked(tag: String) {
-        view.showRechargePointData(
-            rechargePointsList.filter {
+        view.showShelterData(
+            shelterList.filter {
                 tag == it.id
             }[0]
         )

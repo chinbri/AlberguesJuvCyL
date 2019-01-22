@@ -4,7 +4,7 @@ import com.chinsoft.data.entities.ShelterModel
 
 interface MainLocalGateway {
 
-    suspend fun getRechargePoints(): List<ShelterModel>
+    suspend fun getShelterList(): List<ShelterModel>
 
     suspend fun insertAll(points: List<ShelterModel>)
 

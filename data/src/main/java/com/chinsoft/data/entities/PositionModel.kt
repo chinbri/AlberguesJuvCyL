@@ -1,6 +1,6 @@
 package com.chinsoft.data.entities
 
-data class RechargePointsPositionModel (
+data class PositionModel (
     val type: String,
     val coordinates: List<Double>
     )

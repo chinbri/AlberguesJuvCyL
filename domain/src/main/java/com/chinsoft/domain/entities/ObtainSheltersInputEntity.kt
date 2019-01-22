@@ -1,6 +1,6 @@
 package com.chinsoft.domain.entities
 
-data class ObtainRechargePointsInputEntity(
+data class ObtainSheltersInputEntity(
     var searchAll: Boolean,
     var latitude: Double,
     var longitude: Double,

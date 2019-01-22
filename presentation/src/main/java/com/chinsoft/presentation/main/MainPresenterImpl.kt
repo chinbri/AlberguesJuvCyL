@@ -1,16 +1,16 @@
 package com.chinsoft.presentation.main
 
 import com.chinsoft.domain.entities.MapDataEntity
-import com.chinsoft.domain.entities.ObtainRechargePointsInputEntity
+import com.chinsoft.domain.entities.ObtainSheltersInputEntity
 import com.chinsoft.domain.entities.ShelterEntity
-import com.chinsoft.domain.usecase.GetCachedRechargePointsUseCase
-import com.chinsoft.domain.usecase.ObtainRechargePointsUseCase
+import com.chinsoft.domain.usecase.GetCachedSheltersUseCase
+import com.chinsoft.domain.usecase.ObtainSheltersUseCase
 import com.chinsoft.presentation.main.navigator.Navigator
 import javax.inject.Inject
 
 class MainPresenterImpl @Inject constructor(
-    private val obtainRechargePointsUseCase: ObtainRechargePointsUseCase,
-    private val getCachedRechargePointsUseCase: GetCachedRechargePointsUseCase,
+    private val obtainSheltersUseCase: ObtainSheltersUseCase,
+    private val getCachedSheltersUseCase: GetCachedSheltersUseCase,
     private val navigator: Navigator
 ) : MainPresenter {
 
@@ -20,15 +20,15 @@ class MainPresenterImpl @Inject constructor(
 
     override fun initialize(view: MainView) {
         this.view = view
-        getCachedRechargePoints()
+        getCachedShelters()
     }
 
-    override fun obtainNearRechargePoints(latitude: Double, longitude: Double) {
+    override fun obtainNearShelters(latitude: Double, longitude: Double) {
 
         view.showLoadingFooter(true)
 
-        obtainRechargePointsUseCase.executeAsync(
-            ObtainRechargePointsInputEntity(
+        obtainSheltersUseCase.executeAsync(
+            ObtainSheltersInputEntity(
                 false,
                 latitude,
                 longitude,
@@ -50,8 +50,8 @@ class MainPresenterImpl @Inject constructor(
 
     }
 
-    private fun getCachedRechargePoints(){
-        getCachedRechargePointsUseCase.executeAsync(Unit){
+    private fun getCachedShelters(){
+        getCachedSheltersUseCase.executeAsync(Unit){
             shelterList = it.output?.pointList ?: emptyList()
             lastAddress = it.output?.lastAddress
             showAddressOrHideIfNull()
@@ -89,8 +89,8 @@ class MainPresenterImpl @Inject constructor(
 
         view.showLoadingFooter(true)
 
-        obtainRechargePointsUseCase.executeAsync(
-            ObtainRechargePointsInputEntity(true,0.0, 0.0, null)
+        obtainSheltersUseCase.executeAsync(
+            ObtainSheltersInputEntity(true,0.0, 0.0, null)
         ){
 
             view.showLoadingFooter(false)
@@ -113,8 +113,8 @@ class MainPresenterImpl @Inject constructor(
 
             view.showLoadingFooter(true)
 
-            obtainRechargePointsUseCase.executeAsync(
-                ObtainRechargePointsInputEntity(true,0.0, 0.0, lastAddress)
+            obtainSheltersUseCase.executeAsync(
+                ObtainSheltersInputEntity(true,0.0, 0.0, lastAddress)
             ){
 
                 view.showLoadingFooter(false)

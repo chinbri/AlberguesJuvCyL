@@ -8,7 +8,7 @@ enum class ListActions {
 
 interface MainPresenter {
 
-    fun obtainNearRechargePoints(latitude: Double, longitude: Double)
+    fun obtainNearShelters(latitude: Double, longitude: Double)
 
     fun initialize(view: MainView)
 

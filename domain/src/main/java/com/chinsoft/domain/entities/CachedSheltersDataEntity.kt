@@ -1,6 +1,6 @@
 package com.chinsoft.domain.entities
 
-data class CachedRechargePointsDataEntity(
+data class CachedSheltersDataEntity(
 
     val pointList: List<ShelterEntity>,
     val lastAddress: String?

@@ -8,11 +8,11 @@ import javax.inject.Inject
 class MainNetworkGatewayImpl @Inject constructor(val apiService: ApiService): MainNetworkGateway {
 
 
-    override suspend fun getAllRechargePoints(apiToken: String): List<ShelterModel>  =
+    override suspend fun getAllShelters(apiToken: String): List<ShelterModel>  =
         apiService.obtainAllPoints(apiToken) ?: emptyList()
 
 
-    override suspend fun getRechargePointsFromPosition(
+    override suspend fun getSheltersFromPosition(
         latitude: Double,
         longitude: Double,
         ratio: Long,

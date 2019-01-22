@@ -4,8 +4,8 @@ import com.chinsoft.domain.entities.ShelterEntity
 
 interface MapScreenView {
 
-    fun setupMarkers(rechargePointsList: List<ShelterEntity>)
+    fun setupMarkers(shelterList: List<ShelterEntity>)
 
-    fun showRechargePointData(shelterEntity: ShelterEntity)
+    fun showShelterData(shelterEntity: ShelterEntity)
 
 }

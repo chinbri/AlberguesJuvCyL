@@ -98,9 +98,9 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         presenter.onMapReady()
     }
 
-    override fun setupMarkers(rechargePointsList: List<ShelterEntity>){
+    override fun setupMarkers(shelterList: List<ShelterEntity>){
 
-        rechargePointsList.forEach {
+        shelterList.forEach {
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(it.latitude, it.longitude))
@@ -109,13 +109,13 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         }
 
         mMap.setOnMarkerClickListener(this)
-        moveCamera(rechargePointsList)
+        moveCamera(shelterList)
 
     }
 
-    private fun moveCamera(rechargePointsList: List<ShelterEntity>){
+    private fun moveCamera(shelterList: List<ShelterEntity>){
         val builder = LatLngBounds.Builder()
-        for (point in rechargePointsList) {
+        for (point in shelterList) {
             builder.include(LatLng(point.latitude, point.longitude))
         }
         val bounds = builder.build()
@@ -146,7 +146,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
 
-    override fun showRechargePointData(shelterEntity: ShelterEntity) {
+    override fun showShelterData(shelterEntity: ShelterEntity) {
 
         showFooter()
 

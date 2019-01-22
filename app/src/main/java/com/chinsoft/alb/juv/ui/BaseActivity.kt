@@ -2,7 +2,7 @@ package com.chinsoft.alb.juv.ui
 
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.chinsoft.alb.juv.RechargePointsApplication
+import com.chinsoft.alb.juv.ShelterApplication
 import com.chinsoft.alb.juv.di.ActivityComponent
 import com.chinsoft.alb.juv.di.ActivityModule
 import kotlinx.coroutines.Job
@@ -18,7 +18,7 @@ abstract class BaseActivity: AppCompatActivity() {
 
     val activityComponent : ActivityComponent by lazy{
         DaggerActivityComponent.builder()
-            .applicationComponent((application as RechargePointsApplication).applicationComponent)
+            .applicationComponent((application as ShelterApplication).applicationComponent)
             .activityModule(ActivityModule(this))
             .build()
     }

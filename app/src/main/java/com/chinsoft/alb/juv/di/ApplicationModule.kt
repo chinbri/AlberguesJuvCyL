@@ -32,7 +32,7 @@ class ApplicationModule(val application: Application) {
     @Singleton
     fun providesSharedPreferences(): SharedPreferences =
         application
-            .getSharedPreferences("SHARED_PREFERENCES_RECHARGE", MODE_PRIVATE)
+            .getSharedPreferences("SHARED_PREFERENCES_SHELTERS", MODE_PRIVATE)
 
     @Provides
     @Singleton
