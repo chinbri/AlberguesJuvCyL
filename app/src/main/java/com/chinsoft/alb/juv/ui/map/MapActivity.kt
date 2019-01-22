@@ -146,7 +146,6 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
 
-
     override fun showRechargePointData(shelterEntity: ShelterEntity) {
 
         showFooter()

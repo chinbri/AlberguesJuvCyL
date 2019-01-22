@@ -22,6 +22,10 @@ class MapPresenterImpl @Inject constructor(
 
             view.setupMarkers(rechargePointsList)
 
+            if(rechargePointsList.size == 1){
+                onMarkerClicked(rechargePointsList[0].id)
+            }
+
         }
 
     }

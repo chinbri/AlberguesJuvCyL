@@ -15,7 +15,7 @@ typealias RechargePointsAdapterListener = (shelterEntity: ShelterEntity, action:
 
 class RechargePointsAdapter(
     var shelterList: List<ShelterEntity> = emptyList(),
-    val listener: RechargePointsAdapterListener
+    private val listener: RechargePointsAdapterListener
 ): RecyclerView.Adapter<RechargePointItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, index: Int): RechargePointItemViewHolder {
@@ -37,6 +37,9 @@ class RechargePointItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemV
         pointEntity: ShelterEntity,
         listener: RechargePointsAdapterListener
     ){
+        itemView.setOnClickListener {
+            listener.invoke(pointEntity, ListActions.SELECTION)
+        }
 
         val tvName = itemView.findViewById<TextView>(R.id.tvName)
         val ivInfo = itemView.findViewById<ImageView>(R.id.ivInfo)

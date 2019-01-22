@@ -46,6 +46,7 @@ class MainActivity : BaseActivity(), MainView {
                 when (action) {
                     ListActions.INFO -> presenter.onInfoClicked(point)
                     ListActions.NAVIGATION -> presenter.onNavigationSelected(point)
+                    ListActions.SELECTION -> presenter.onShelterSelected(point)
                 }
             }
         }

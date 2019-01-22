@@ -3,7 +3,7 @@ package com.chinsoft.presentation.main
 import com.chinsoft.domain.entities.ShelterEntity
 
 enum class ListActions {
-    INFO, NAVIGATION
+    INFO, NAVIGATION, SELECTION
 }
 
 interface MainPresenter {
@@ -25,5 +25,7 @@ interface MainPresenter {
     fun onMenuHelpSelected()
 
     fun onSearchAllClicked()
+
+    fun onShelterSelected(point: ShelterEntity)
 
 }
