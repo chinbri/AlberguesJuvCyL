@@ -14,6 +14,10 @@ class LocationUtilsImpl @Inject constructor(val context: Context): LocationUtils
                              currentLatitude: Double,
                              currentLongitude: Double): Float{
 
+        if(currentLatitude == 0.0 || currentLongitude == 0.0){
+            return 0F
+        }
+
         val destinationLocation = Location("")
         destinationLocation.longitude = destinationLongitude
         destinationLocation.latitude = destinationLatitude

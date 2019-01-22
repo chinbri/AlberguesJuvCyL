@@ -8,7 +8,12 @@ import retrofit2.http.Query
 interface RechargePointsApi {
 
     @GET("3f5r-8hut.json")
-    fun getRechagePoints(
+    fun getAllShelters(
+        @Query("\$\$app_token") appToken: String
+    ): Deferred<List<ShelterModel>>
+
+    @GET("3f5r-8hut.json")
+    fun getAllShelters(
         @Query("\$where") query: String,
         @Query("\$\$app_token") appToken: String
     ): Deferred<List<ShelterModel>>

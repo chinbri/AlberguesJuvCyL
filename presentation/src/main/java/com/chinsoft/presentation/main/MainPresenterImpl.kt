@@ -29,6 +29,7 @@ class MainPresenterImpl @Inject constructor(
 
         obtainRechargePointsUseCase.executeAsync(
             ObtainRechargePointsInputEntity(
+                false,
                 latitude,
                 longitude,
                 null
@@ -76,6 +77,24 @@ class MainPresenterImpl @Inject constructor(
 
     }
 
+    override fun onSearchAllClicked() {
+
+        obtainRechargePointsUseCase.executeAsync(
+            ObtainRechargePointsInputEntity(true,0.0, 0.0, null)
+        ){
+
+            view.showLoadingFooter(false)
+
+            shelterList = it.output ?: emptyList()
+            view.drawList(shelterList)
+
+            showAddressOrHideIfNull()
+
+            view.showSearchOkMessage()
+        }
+
+    }
+
     override fun onSearchByAddressClicked() {
 
         navigator.displaySearchByAddressDialog(lastAddress ?: ""){
@@ -85,7 +104,7 @@ class MainPresenterImpl @Inject constructor(
             view.showLoadingFooter(true)
 
             obtainRechargePointsUseCase.executeAsync(
-                ObtainRechargePointsInputEntity(0.0, 0.0, lastAddress)
+                ObtainRechargePointsInputEntity(true,0.0, 0.0, lastAddress)
             ){
 
                 view.showLoadingFooter(false)

@@ -29,4 +29,5 @@
     <string name="no_results">No hay resultados</string>
     <string name="main_title">Buscador de albergues</string>
     <string name="version_label">Versión %s</string>
+    <string name="search_all">Todos</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.chinsoft.domain.usecase.main
 
+import com.chinsoft.data.entities.ShelterModel
 import com.chinsoft.data.gateways.MainLocalGateway
 import com.chinsoft.data.gateways.MainNetworkGateway
 import com.chinsoft.domain.entities.ObtainRechargePointsInputEntity
@@ -46,12 +47,9 @@ class ObtainRechargePointsUseCaseImpl @Inject constructor(override val job: Job,
         }
 
         try{
-            val rechargePoints = mainNetworkGateway.getRechargePoints(
-                input.latitude,
-                input.longitude,
-                preferenceUtils.getSearchRatio() * 1000L,
-                datosAbiertosApiKey
-            )
+            val rechargePoints = obtainRechargePoints(input).filter {
+                isValidPosition(it.posicion?.coordinates?.get(1) ?: 0.0, it.posicion?.coordinates?.get(0) ?: 0.0)
+            }
 
             mainLocalGateway.deleteAll()
 
@@ -76,6 +74,28 @@ class ObtainRechargePointsUseCaseImpl @Inject constructor(override val job: Job,
         }
 
 
+    }
+
+    /**
+     * latitude and longitude bounds of castile-leon territory, in case of invalid position
+     */
+    private fun isValidPosition(latitude: Double, longitude: Double) =
+        latitude > 39.5 && latitude < 43 && longitude > -8 && longitude < 0
+
+    private suspend fun obtainRechargePoints(input: ObtainRechargePointsInputEntity): List<ShelterModel>{
+
+        if(input.searchAll){
+
+            return mainNetworkGateway.getAllRechargePoints(
+                datosAbiertosApiKey)
+
+        }else{
+            return mainNetworkGateway.getRechargePointsFromPosition(
+                input.latitude,
+                input.longitude,
+                preferenceUtils.getSearchRatio() * 1000L,
+                datosAbiertosApiKey)
+        }
     }
 
 }

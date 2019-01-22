@@ -24,4 +24,6 @@ interface MainPresenter {
 
     fun onMenuHelpSelected()
 
+    fun onSearchAllClicked()
+
 }

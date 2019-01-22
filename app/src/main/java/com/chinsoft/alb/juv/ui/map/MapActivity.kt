@@ -148,6 +148,11 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         tvDescription.text = shelterEntity.description
         tvDistance.text = resources.getString(R.string.distance_label_km, shelterEntity.distance)
 
+        wrapperDistance.visibility = when(shelterEntity.distance) {
+            0F -> View.GONE
+            else -> View.VISIBLE
+        }
+
         if(shelterEntity.url.isNotEmpty()){
             ivInfo.setOnClickListener {
                 presenter.onInfoClicked(shelterEntity)

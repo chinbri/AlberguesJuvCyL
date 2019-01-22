@@ -30,15 +30,25 @@
                 android:layout_marginTop="16dp"/>
 
         <Button
+                android:id="@+id/btnFindAllRechargePoints"
+                style="@style/Button"
+                android:text="@string/search_all"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/btnFindNearRechargePoints"
+                app:layout_constraintTop_toTopOf="@+id/btnFindNearRechargePoints"
+                app:layout_constraintBottom_toBottomOf="@+id/btnFindNearRechargePoints"/>
+
+        <Button
                 android:id="@+id/btnFindNearRechargePoints"
                 style="@style/Button"
                 android:text="@string/search_rechage_points"
                 app:layout_constraintTop_toBottomOf="@+id/labelSearch"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnFindAllRechargePoints"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/btnFindByAddress"
-                app:layout_constraintHorizontal_bias="0.5"/>
+                />
 
         <Button
                 android:id="@+id/btnFindByAddress"
@@ -49,7 +59,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toEndOf="@+id/btnFindNearRechargePoints"
-                app:layout_constraintHorizontal_bias="0.5"/>
+                />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -86,6 +86,12 @@ class MainActivity : BaseActivity(), MainView {
         val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_alpha)
         rvRechagePoints.layoutAnimation = animation
 
+        btnFindAllRechargePoints.setOnClickListener {
+
+            presenter.onSearchAllClicked()
+
+        }
+
         btnFindNearRechargePoints.setOnClickListener{
             Dexter
                 .withActivity(this)

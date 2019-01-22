@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.RecyclerView
 import com.chinsoft.domain.entities.ShelterEntity
 import com.chinsoft.presentation.main.ListActions
@@ -43,11 +44,17 @@ class RechargePointItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemV
         val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
         val ivNavigation = itemView.findViewById<ImageView>(R.id.ivNavigation)
         val tvDistance = itemView.findViewById<TextView>(R.id.tvDistance)
+        val wrapperDistance = itemView.findViewById<Group>(R.id.wrapperDistance)
 
         tvName.text = pointEntity.name
         tvAddress.text = pointEntity.address
         tvDescription.text = pointEntity.description
         tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, pointEntity.distance)
+        if(pointEntity.distance == 0f){
+            wrapperDistance.visibility = View.GONE
+        }else{
+            wrapperDistance.visibility = View.VISIBLE
+        }
 
         if(pointEntity.url.isNotEmpty()){
             ivInfo.setOnClickListener {
