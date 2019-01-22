@@ -55,6 +55,7 @@ dependencies {
     implementation libraries.maps
     implementation libraries.material
     implementation libraries.picasso
+    implementation libraries.pager_indicator
 
     //test
     testImplementation 'junit:junit:4.12'

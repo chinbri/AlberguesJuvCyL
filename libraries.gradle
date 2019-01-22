@@ -16,7 +16,8 @@ ext {
             v_dexter_version = '5.0.0',
             v_play_services_version = '16.0.0',
             v_material = '1.0.0',
-            v_picasso = '2.71828'
+            v_picasso = '2.71828',
+            v_pager_indicator = '1.0.3'
             //---------
     ]
 
@@ -42,7 +43,8 @@ ext {
             location                    : "com.google.android.gms:play-services-location:$v_play_services_version",
             maps                        : "com.google.android.gms:play-services-maps:$v_play_services_version",
             material                    : "com.google.android.material:material:$v_material",
-            picasso                     : "com.squareup.picasso:picasso:$v_picasso"
+            picasso                     : "com.squareup.picasso:picasso:$v_picasso",
+            pager_indicator             : "com.romandanylyk:pageindicatorview:$v_pager_indicator"
 
     ]
 
