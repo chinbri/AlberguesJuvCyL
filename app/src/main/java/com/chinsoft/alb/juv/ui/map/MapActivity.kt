@@ -32,6 +32,8 @@ import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.ui.images.ImageAdapter
 
 
+
+
 class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     @Inject
@@ -123,7 +125,11 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         val padding = 60 // offset from edges of the map in pixels
         val cu = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 
-        mMap.animateCamera(cu)
+        mMap.setOnMapLoadedCallback {
+            mMap.setOnMapLoadedCallback(null)
+            mMap.animateCamera(cu)
+        }
+
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
