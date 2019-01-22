@@ -15,7 +15,8 @@ ext {
             v_okhttp_version = '3.12.1',
             v_dexter_version = '5.0.0',
             v_play_services_version = '16.0.0',
-            v_material = '1.0.0'
+            v_material = '1.0.0',
+            v_picasso = '2.71828'
             //---------
     ]
 
@@ -40,7 +41,8 @@ ext {
             dexter                      : "com.karumi:dexter:$v_dexter_version",
             location                    : "com.google.android.gms:play-services-location:$v_play_services_version",
             maps                        : "com.google.android.gms:play-services-maps:$v_play_services_version",
-            material                    : "com.google.android.material:material:$v_material"
+            material                    : "com.google.android.material:material:$v_material",
+            picasso                     : "com.squareup.picasso:picasso:$v_picasso"
 
     ]
 

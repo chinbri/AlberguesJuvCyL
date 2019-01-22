@@ -39,29 +39,29 @@ class RechargePointItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemV
     ){
 
         val tvName = itemView.findViewById<TextView>(R.id.tvName)
-        val tvAddress = itemView.findViewById<TextView>(R.id.tvAddress)
         val ivInfo = itemView.findViewById<ImageView>(R.id.ivInfo)
         val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
+
+        val tvLetter = itemView.findViewById<TextView>(R.id.tvLetter)
         val ivNavigation = itemView.findViewById<ImageView>(R.id.ivNavigation)
         val tvDistance = itemView.findViewById<TextView>(R.id.tvDistance)
         val wrapperDistance = itemView.findViewById<Group>(R.id.wrapperDistance)
 
         tvName.text = pointEntity.name
-        tvAddress.text = pointEntity.address
         tvDescription.text = pointEntity.description
-        tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, pointEntity.distance)
-        if(pointEntity.distance == 0f){
-            wrapperDistance.visibility = View.GONE
-        }else{
-            wrapperDistance.visibility = View.VISIBLE
-        }
+        tvLetter.text = pointEntity.letter
 
-        if(pointEntity.url.isNotEmpty()){
+        tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, pointEntity.distance)
+
+        wrapperDistance.visibility = if (pointEntity.distance == 0f) {View.GONE} else {View.VISIBLE}
+
+        if(pointEntity.url.isNullOrEmpty()){
+            ivInfo.visibility = View.GONE
+        }else{
+            ivInfo.visibility = View.VISIBLE
             ivInfo.setOnClickListener {
                 listener.invoke(pointEntity, ListActions.INFO)
             }
-        }else{
-            ivInfo.visibility = View.GONE
         }
 
         ivNavigation.setOnClickListener{

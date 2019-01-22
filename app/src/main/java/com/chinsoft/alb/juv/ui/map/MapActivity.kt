@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
 import com.chinsoft.alb.juv.R
+import com.chinsoft.alb.juv.ui.images.ImageAdapter
 
 
 class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -132,7 +133,6 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         }
 
-
         return true
 
     }
@@ -144,27 +144,41 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         showFooter()
 
         tvName.text = shelterEntity.name
-        tvAddress.text = shelterEntity.address
         tvDescription.text = shelterEntity.description
+        tvLetter.text = shelterEntity.letter
         tvDistance.text = resources.getString(R.string.distance_label_km, shelterEntity.distance)
+
+        tvLetter.visibility = if(shelterEntity.letter?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
+        setupImageGallery(shelterEntity)
 
         wrapperDistance.visibility = when(shelterEntity.distance) {
             0F -> View.GONE
             else -> View.VISIBLE
         }
 
-        if(shelterEntity.url.isNotEmpty()){
+        if(shelterEntity.url.isNullOrEmpty()){
+            ivInfo.visibility = View.GONE
+        }else{
+            ivInfo.visibility = View.VISIBLE
             ivInfo.setOnClickListener {
                 presenter.onInfoClicked(shelterEntity)
             }
-        }else{
-            ivInfo.visibility = View.GONE
         }
 
         ivNavigation.setOnClickListener{
             presenter.onNavigationClicked(shelterEntity)
         }
 
+    }
+
+    private fun setupImageGallery(shelterEntity: ShelterEntity) {
+        if (shelterEntity.images.isNullOrEmpty()) {
+            wrapperImages.visibility = View.GONE
+        } else {
+            wrapperImages.visibility = View.VISIBLE
+            pager.adapter = ImageAdapter(this, shelterEntity.images!!.split(", "))
+        }
     }
 
     private fun showFooter() {

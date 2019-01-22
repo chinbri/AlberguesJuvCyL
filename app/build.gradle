@@ -54,6 +54,7 @@ dependencies {
     implementation libraries.location
     implementation libraries.maps
     implementation libraries.material
+    implementation libraries.picasso
 
     //test
     testImplementation 'junit:junit:4.12'

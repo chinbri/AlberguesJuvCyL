@@ -67,7 +67,9 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onInfoClicked(point: ShelterEntity) {
 
-        navigator.openUrl(point.url)
+        if(point.url != null){
+            navigator.openUrl(point.url!!)
+        }
 
     }
 
@@ -78,6 +80,8 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onSearchAllClicked() {
+
+        view.showLoadingFooter(true)
 
         obtainRechargePointsUseCase.executeAsync(
             ObtainRechargePointsInputEntity(true,0.0, 0.0, null)

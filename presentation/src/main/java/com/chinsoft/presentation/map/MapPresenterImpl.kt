@@ -35,7 +35,9 @@ class MapPresenterImpl @Inject constructor(
     }
 
     override fun onInfoClicked(pointEntity: ShelterEntity) {
-        navigator.openUrl(pointEntity.url)
+        if(pointEntity.url != null){
+            navigator.openUrl(pointEntity.url!!)
+        }
     }
 
     override fun onNavigationClicked(pointEntity: ShelterEntity) {
