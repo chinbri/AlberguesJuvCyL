@@ -5,7 +5,7 @@ import com.chinsoft.data.entities.ShelterModel
 data class ShelterEntity (
     val id: String,
     val name: String,
-    val letter: String?,
+    val opened: String?,
     val description: String,
     val url: String?,
     val longitude: Double,
@@ -18,7 +18,7 @@ data class ShelterEntity (
         fun fromModel(model: ShelterModel) = ShelterEntity(
             model.identificador,
             model.t_tulo ?: "---",
-            model.carta,
+            model.periodoabierto,
             model.descripci_n ?: "",
             model.enlace_al_contenido,
             model.posicion?.coordinates?.get(0) ?: 0.0,

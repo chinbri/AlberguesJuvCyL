@@ -1,5 +1,6 @@
 package com.chinsoft.alb.juv.ui.main.adapter
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,45 +35,48 @@ class ShelterAdapter(
 class ShelterItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     fun bind(
-        pointEntity: ShelterEntity,
+        shelterEntity: ShelterEntity,
         listener: ShelterAdapterListener
     ){
         itemView.setOnClickListener {
-            listener.invoke(pointEntity, ListActions.SELECTION)
+            listener.invoke(shelterEntity, ListActions.SELECTION)
         }
 
         val tvName = itemView.findViewById<TextView>(R.id.tvName)
         val ivInfo = itemView.findViewById<ImageView>(R.id.ivInfo)
         val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
 
-        val tvLetter = itemView.findViewById<TextView>(R.id.tvLetter)
+        val tvOpened = itemView.findViewById<TextView>(R.id.tvOpened)
         val ivNavigation = itemView.findViewById<ImageView>(R.id.ivNavigation)
         val tvDistance = itemView.findViewById<TextView>(R.id.tvDistance)
         val wrapperDistance = itemView.findViewById<Group>(R.id.wrapperDistance)
 
-        tvName.text = pointEntity.name
-        tvDescription.text = pointEntity.description
-        tvLetter.text = pointEntity.letter
+        tvName.text = shelterEntity.name
+        tvDescription.text = shelterEntity.description
+        tvOpened.text = shelterEntity.opened ?: ""
+        tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
-        tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, pointEntity.distance)
+        tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, shelterEntity.distance)
 
-        wrapperDistance.visibility = if (pointEntity.distance == 0f) {View.GONE} else {View.VISIBLE}
+        wrapperDistance.visibility = if (shelterEntity.distance == 0f) {View.GONE} else {View.VISIBLE}
 
-        if(pointEntity.url.isNullOrEmpty()){
+        if(shelterEntity.url.isNullOrEmpty()){
             ivInfo.visibility = View.GONE
         }else{
             ivInfo.visibility = View.VISIBLE
             ivInfo.setOnClickListener {
-                listener.invoke(pointEntity, ListActions.INFO)
+                listener.invoke(shelterEntity, ListActions.INFO)
             }
         }
 
         ivNavigation.setOnClickListener{
-            listener.invoke(pointEntity, ListActions.NAVIGATION)
+            listener.invoke(shelterEntity, ListActions.NAVIGATION)
         }
 
 
     }
+
+    private fun removeHtmlTags(text: String?) = if(text == null) { "" }else { Html.fromHtml(text).toString() }
 
 
 }

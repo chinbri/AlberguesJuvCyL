@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
+import android.text.Html
 import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.ui.images.ImageAdapter
 
@@ -158,10 +159,10 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         tvName.text = shelterEntity.name
         tvDescription.text = shelterEntity.description
-        tvLetter.text = shelterEntity.letter
+        tvOpened.text = Html.fromHtml(shelterEntity.opened ?: "")
         tvDistance.text = resources.getString(R.string.distance_label_km, shelterEntity.distance)
 
-        tvLetter.visibility = if(shelterEntity.letter?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+        tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
         setupImageGallery(shelterEntity)
 
