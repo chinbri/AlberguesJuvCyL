@@ -24,7 +24,7 @@
     <string name="settings">Ajustes</string>
     <string name="about">Acerca de</string>
     <string name="search_ratio">Radio de búsqueda (en KM)</string>
-    <string name="ratio_limit">1-200 Km</string>
+    <string name="ratio_limit">1–200 Km</string>
     <string name="seach_ratio_error">Debe introducir un valor entre 1 y 200</string>
     <string name="no_results">No hay resultados</string>
     <string name="main_title">Buscador de albergues</string>
@@ -32,4 +32,7 @@
     <string name="search_all">Todos</string>
     <string name="no_images">No hay imágenes</string>
     <string name="opened">Abierto:</string>
+    <string name="content_description_minimize">Minimizar</string>
+    <string name="content_description_info">más info</string>
+    <string name="content_description_navigate">Navegar</string>
 </resources>

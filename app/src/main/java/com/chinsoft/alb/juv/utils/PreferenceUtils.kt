@@ -21,7 +21,7 @@ class PreferenceUtilsImpl @Inject constructor(
 
     override fun getLastAddress() = sharedPreferences.getString(PREFERENCE_ADDRESS, null)
 
-    override fun getSearchRatio() = sharedPreferences.getInt(PREFERENCE_RATIO, 10)
+    override fun getSearchRatio() = sharedPreferences.getInt(PREFERENCE_RATIO, 30)
 
     override fun saveSearchRatio(searchRatio: Int) {
 
