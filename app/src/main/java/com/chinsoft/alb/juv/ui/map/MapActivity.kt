@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Point
 import android.text.Html
 import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.ui.images.ImageAdapter
@@ -137,6 +138,19 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
     }
 
+    private fun centerCameraInMarker(position: LatLng){
+
+        val projection =  mMap.projection
+
+        val latitudeOffset = (projection.visibleRegion.latLngBounds.northeast.latitude - projection.visibleRegion.latLngBounds.southwest.latitude)/4
+
+        val cu = CameraUpdateFactory.newLatLng(LatLng(position.latitude - latitudeOffset, position.longitude))
+
+        mMap.setOnMapLoadedCallback(null)
+        mMap.animateCamera(cu)
+
+    }
+
     override fun onMarkerClick(marker: Marker?): Boolean {
 
         //leave Marker default color if re-click current Marker
@@ -149,6 +163,8 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
             marker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_on))
             prevMarker = marker
+
+            centerCameraInMarker(marker.position)
 
         }
 
