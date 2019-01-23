@@ -1,9 +1,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_height="match_parent"
-              android:layout_width="match_parent">
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical"
+                                                   android:layout_height="match_parent"
+                                                   android:layout_width="match_parent">
 
     <include layout="@layout/toolbar"
              android:id="@+id/customToolbar"
@@ -15,9 +15,12 @@
           android:layout_height="0dp"
           android:id="@+id/map"
           app:layout_constraintTop_toBottomOf="@id/customToolbar"
-          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintBottom_toTopOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
+          app:cameraTargetLat="41.640"
+          app:cameraTargetLng="-4.738"
+          app:cameraZoom="7"
           tools:context="com.chinsoft.alb.juv.ui.map.MapActivity"
           android:name="com.google.android.gms.maps.SupportMapFragment"/>
 

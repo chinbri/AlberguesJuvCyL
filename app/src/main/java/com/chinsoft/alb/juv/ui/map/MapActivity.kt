@@ -98,6 +98,8 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        googleMap.setMinZoomPreference(6F)
+        googleMap.setMaxZoomPreference(18F)
         mMap = googleMap
 
         presenter.onMapReady()
