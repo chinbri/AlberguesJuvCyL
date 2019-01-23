@@ -11,6 +11,8 @@ class MapPresenterImpl @Inject constructor(
     lateinit var view: MapScreenView
     lateinit var shelterList: List<ShelterEntity>
 
+    private var footerMinimized = false
+
     override fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>) {
         this.view = mapScreenView
         this.shelterList = shelterList
@@ -36,6 +38,9 @@ class MapPresenterImpl @Inject constructor(
                 tag == it.id
             }[0]
         )
+        if(footerMinimized){
+            onRedimFooterClicked()
+        }
     }
 
     override fun onInfoClicked(pointEntity: ShelterEntity) {
@@ -46,5 +51,14 @@ class MapPresenterImpl @Inject constructor(
 
     override fun onNavigationClicked(pointEntity: ShelterEntity) {
         navigator.goToNavigation(pointEntity)
+    }
+
+    override fun onRedimFooterClicked() {
+        if(footerMinimized){
+            view.maximizeFooter()
+        }else{
+            view.minimizeFooter()
+        }
+        footerMinimized = !footerMinimized
     }
 }

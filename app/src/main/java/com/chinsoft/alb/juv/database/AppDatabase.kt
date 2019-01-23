@@ -8,7 +8,7 @@ import com.chinsoft.data.dao.address.AddressDao
 import com.chinsoft.data.entities.ShelterModel
 import com.chinsoft.data.entities.address.AddressModel
 
-@Database(entities = [ShelterModel::class, AddressModel::class], version = 1)
+@Database(entities = [ShelterModel::class, AddressModel::class], version = 1, exportSchema = false)
 @TypeConverters(
     CoordinateTypeConverter::class,
     DateTypeConverter::class

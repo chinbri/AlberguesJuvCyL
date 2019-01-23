@@ -14,4 +14,6 @@ interface MapPresenter {
 
     fun onNavigationClicked(pointEntity: ShelterEntity)
 
+    fun onRedimFooterClicked()
+
 }

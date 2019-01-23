@@ -8,4 +8,6 @@ interface MapScreenView {
 
     fun showShelterData(shelterEntity: ShelterEntity)
 
+    fun minimizeFooter()
+    fun maximizeFooter()
 }

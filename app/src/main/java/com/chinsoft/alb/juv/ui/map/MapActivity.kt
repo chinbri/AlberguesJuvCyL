@@ -1,5 +1,6 @@
 package com.chinsoft.alb.juv.ui.map
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -31,8 +32,6 @@ import android.graphics.Canvas
 import android.text.Html
 import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.ui.images.ImageAdapter
-
-
 
 
 class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -80,6 +79,9 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        wrapperMinimize.setOnClickListener {
+            presenter.onRedimFooterClicked()
+        }
 
         presenter.initialize(
             this,
@@ -197,6 +199,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         }
     }
 
+
     private fun showFooter() {
 
         if(lyFooterMap.visibility != View.VISIBLE){
@@ -208,6 +211,33 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             lyFooterMap.visibility = View.VISIBLE
         }
 
+    }
+
+    override fun minimizeFooter(){
+        animateFooter(resources.getDimensionPixelSize(R.dimen.mapFooterHeight))
+    }
+
+    override fun maximizeFooter(){
+        animateFooter(0)
+    }
+
+    internal var currentDegrees = 0F
+
+    private fun animateFooter(moveOffset: Int) {
+
+
+        ObjectAnimator.ofFloat(lyFooterMap, "translationY", moveOffset.toFloat()).apply {
+            duration = 400
+            start()
+        }
+
+        val nextDeg = (currentDegrees + 180F) % 360
+        ObjectAnimator.ofFloat(ivMinimize, "rotation", nextDeg ).apply {
+            duration = 400
+            start()
+        }
+
+        currentDegrees = nextDeg
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
