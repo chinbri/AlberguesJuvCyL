@@ -154,7 +154,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         val projection =  mMap.projection
 
-        val latitudeOffset = (projection.visibleRegion.latLngBounds.northeast.latitude - projection.visibleRegion.latLngBounds.southwest.latitude)/4
+        val latitudeOffset = (projection.visibleRegion.latLngBounds.northeast.latitude - projection.visibleRegion.latLngBounds.southwest.latitude)/3
 
         val cu = CameraUpdateFactory.newLatLng(LatLng(position.latitude - latitudeOffset, position.longitude))
 
