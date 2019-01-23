@@ -22,7 +22,10 @@ class MapPresenterImpl @Inject constructor(
 
         if(shelterList.isNotEmpty()){
 
-            view.setupMarkers(shelterList)
+            view.setupMarkers(
+                shelterList,
+                if(shelterList.size == 1) { shelterList[0] } else { null }
+            )
 
             if(shelterList.size == 1){
                 onMarkerClicked(shelterList[0].id)

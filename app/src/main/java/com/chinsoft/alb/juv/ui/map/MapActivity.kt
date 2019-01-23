@@ -29,7 +29,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Point
 import android.text.Html
 import com.chinsoft.alb.juv.R
 import com.chinsoft.alb.juv.ui.images.ImageAdapter
@@ -106,7 +105,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         presenter.onMapReady()
     }
 
-    override fun setupMarkers(shelterList: List<ShelterEntity>){
+    override fun setupMarkers(shelterList: List<ShelterEntity>, onlyShelter: ShelterEntity?){
 
         shelterList.forEach {
             mMap.addMarker(
@@ -117,11 +116,14 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         }
 
         mMap.setOnMarkerClickListener(this)
-        moveCamera(shelterList)
+        moveCamera(shelterList, onlyShelter)
 
     }
 
-    private fun moveCamera(shelterList: List<ShelterEntity>){
+    private fun moveCamera(
+        shelterList: List<ShelterEntity>,
+        onlyShelter: ShelterEntity?
+    ){
         val builder = LatLngBounds.Builder()
         for (point in shelterList) {
             builder.include(LatLng(point.latitude, point.longitude))
@@ -133,7 +135,17 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         mMap.setOnMapLoadedCallback {
             mMap.setOnMapLoadedCallback(null)
-            mMap.animateCamera(cu)
+            mMap.animateCamera(cu, object: GoogleMap.CancelableCallback {
+                override fun onFinish() {
+                    if(onlyShelter != null){
+                        centerCameraInMarker(LatLng(onlyShelter.latitude, onlyShelter.longitude))
+                    }
+                }
+
+                override fun onCancel() {
+                    //do nothing
+                }
+            })
         }
 
     }
@@ -146,14 +158,12 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         val cu = CameraUpdateFactory.newLatLng(LatLng(position.latitude - latitudeOffset, position.longitude))
 
-        mMap.setOnMapLoadedCallback(null)
         mMap.animateCamera(cu)
 
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
 
-        //leave Marker default color if re-click current Marker
         if (marker != null
             && (prevMarker == null || marker != prevMarker)) {
 
@@ -162,6 +172,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             prevMarker?.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house))
 
             marker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_on))
+
             prevMarker = marker
 
             centerCameraInMarker(marker.position)
