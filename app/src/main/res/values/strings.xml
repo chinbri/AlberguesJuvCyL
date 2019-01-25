@@ -1,11 +1,7 @@
 <resources>
-    <string name="app_name">Pruebas DDF</string>
-    <string name="location_permission_needed">Debe proporcionar permisos de localización a la app para obtener los
-        puntos de recarga cercanos a su posición
-    </string>
-    <string name="location_desabled_warning">Debe habilitar la localización para obtener los puntos de recarga
-        cercanos
-    </string>
+    <string name="app_name">Alojam. Juveniles CyL</string>
+    <string name="location_permission_needed">Debe proporcionar permisos de localización a la app para obtener los alojamientos cercanos a su posición</string>
+    <string name="location_desabled_warning">Debe habilitar la localización para obtener los alojamientos cercanos</string>
     <string name="searching_position_message">Buscando…</string>
     <string name="cancel">Cancelar</string>
     <string name="search_rechage_points">Cercanos</string>

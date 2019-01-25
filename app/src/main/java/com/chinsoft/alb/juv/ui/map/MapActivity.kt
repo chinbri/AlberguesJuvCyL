@@ -111,7 +111,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(it.latitude, it.longitude))
-                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_house))
+                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_house_off))
             ).tag = it.id
         }
 
@@ -169,9 +169,12 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
             presenter.onMarkerClicked(marker.tag as String)
 
-            prevMarker?.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house))
+            prevMarker?.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_off))
 
             marker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_on))
+
+            prevMarker?.zIndex = Float.MAX_VALUE - 1
+            marker.zIndex = Float.MAX_VALUE
 
             prevMarker = marker
 
