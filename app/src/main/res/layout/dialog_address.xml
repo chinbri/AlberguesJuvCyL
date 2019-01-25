@@ -20,12 +20,13 @@
 
     <AutoCompleteTextView
             android:id="@+id/autoAddress"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_address"
             android:textColorHint="@color/green"
             app:layout_constraintTop_toBottomOf="@id/tvAddressLabel" android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/tvAddressLabel"/>
+            app:layout_constraintStart_toStartOf="@+id/tvAddressLabel"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
             android:id="@+id/btnAccept"

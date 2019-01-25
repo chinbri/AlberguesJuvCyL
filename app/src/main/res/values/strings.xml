@@ -11,7 +11,7 @@
     <string name="search_by_address">Por dirección</string>
     <string name="search">Buscar:</string>
     <string name="introduce_address">Dirección a buscar</string>
-    <string name="hint_address">Calle número localidad CP…</string>
+    <string name="hint_address">Localidad / Calle …</string>
     <string name="accept">Aceptar</string>
     <string name="cant_find_address">No se ha podido encontrar la dirección</string>
     <string name="current_address">Dirección: %s</string>
