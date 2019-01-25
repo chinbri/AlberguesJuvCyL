@@ -23,7 +23,7 @@
     <string name="ratio_limit">1–200 Km</string>
     <string name="seach_ratio_error">Debe introducir un valor entre 1 y 200</string>
     <string name="no_results">No hay resultados</string>
-    <string name="main_title">Buscador de albergues</string>
+    <string name="main_title">Alojamientos juveniles CyL</string>
     <string name="version_label">Versión %s</string>
     <string name="search_all">Todos</string>
     <string name="no_images">No hay imágenes</string>

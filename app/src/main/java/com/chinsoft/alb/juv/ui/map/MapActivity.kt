@@ -98,11 +98,18 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        googleMap.setMinZoomPreference(6F)
-        googleMap.setMaxZoomPreference(18F)
+        setupMapOptions(googleMap)
+
         mMap = googleMap
 
         presenter.onMapReady()
+    }
+
+    private fun setupMapOptions(googleMap: GoogleMap) {
+        googleMap.setMinZoomPreference(6F)
+        googleMap.setMaxZoomPreference(18F)
+        googleMap.uiSettings.isRotateGesturesEnabled = false
+        googleMap.uiSettings.isTiltGesturesEnabled = false
     }
 
     override fun setupMarkers(shelterList: List<ShelterEntity>, onlyShelter: ShelterEntity?){
@@ -111,7 +118,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(it.latitude, it.longitude))
-                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_house_off))
+                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_marker_off))
             ).tag = it.id
         }
 
@@ -169,9 +176,9 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
             presenter.onMarkerClicked(marker.tag as String)
 
-            prevMarker?.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_off))
+            prevMarker?.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_marker_off))
 
-            marker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_house_on))
+            marker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_marker_on))
 
             prevMarker?.zIndex = Float.MAX_VALUE - 1
             marker.zIndex = Float.MAX_VALUE
