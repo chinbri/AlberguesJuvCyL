@@ -28,11 +28,13 @@
                         android:contentDescription="@string/content_description_minimize"/>
         </RelativeLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="@dimen/mapFooterHeight"
+                    android:background="@color/greenAlmostWhite">
+                <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/mapFooterHeight"
+                android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
-                android:background="@color/greenAlmostWhite"
                 android:padding="15dp"
                 android:clickable="true"
                 android:focusable="true">
@@ -157,10 +159,9 @@
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/imageWrapperHeight"
                 android:layout_marginTop="15dp"
                 app:layout_constraintTop_toBottomOf="@id/tvDistance"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/guideline" />
 
@@ -179,30 +180,29 @@
                 app:piv_unselectedColor="@color/lightGreen"
                 app:piv_viewPager="@id/pager" android:layout_marginBottom="8dp"/>
 
-        <RelativeLayout
-                android:id="@+id/wrapperNoImages"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:visibility="gone"
-                android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/tvDistance"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                tools:visibility="visible">
+                        <RelativeLayout
+                                android:id="@+id/wrapperNoImages"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/imageWrapperHeight"
+                                android:visibility="gone"
+                                android:layout_marginTop="15dp"
+                                app:layout_constraintTop_toBottomOf="@id/tvDistance"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/guideline"
+                                tools:visibility="visible">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|end"
-                        android:textSize="20sp"
-                        android:gravity="center"
-                        android:rotation="-45"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/light_grey"
-                        android:text="@string/no_images"/>
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="bottom|end"
+                                        android:textSize="20sp"
+                                        android:gravity="center"
+                                        android:rotation="-45"
+                                        android:layout_centerInParent="true"
+                                        android:textColor="@color/light_grey"
+                                        android:text="@string/no_images"/>
 
-        </RelativeLayout>
+                        </RelativeLayout>
 
 
         <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -214,5 +214,6 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 </LinearLayout>
