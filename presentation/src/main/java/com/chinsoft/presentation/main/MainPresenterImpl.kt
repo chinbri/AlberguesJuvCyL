@@ -114,7 +114,7 @@ class MainPresenterImpl @Inject constructor(
             view.showLoadingFooter(true)
 
             obtainSheltersUseCase.executeAsync(
-                ObtainSheltersInputEntity(true,0.0, 0.0, lastAddress)
+                ObtainSheltersInputEntity(false,0.0, 0.0, lastAddress)
             ){
 
                 view.showLoadingFooter(false)
