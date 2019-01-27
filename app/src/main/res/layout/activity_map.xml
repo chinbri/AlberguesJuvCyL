@@ -21,7 +21,7 @@
           app:cameraTargetLat="41.640"
           app:cameraTargetLng="-4.738"
           app:cameraZoom="7"
-          tools:context="com.chinsoft.alb.juv.ui.map.MapActivity"
+          tools:context="com.chin.alb.juv.ui.map.MapActivity"
           android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     <include
