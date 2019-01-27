@@ -4,3 +4,4 @@ interface UseCaseNotification
 
 class InternalErrorNotification: UseCaseNotification
 class AddressNotFoundNotification: UseCaseNotification
+class NetworkErrorNotification: UseCaseNotification

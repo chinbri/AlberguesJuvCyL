@@ -5,13 +5,11 @@ import com.chin.data.gateways.MainLocalGateway
 import com.chin.data.gateways.MainNetworkGateway
 import com.chin.domain.entities.ObtainSheltersInputEntity
 import com.chin.domain.entities.ShelterEntity
-import com.chin.domain.usecase.AddressNotFoundNotification
-import com.chin.domain.usecase.InternalErrorNotification
-import com.chin.domain.usecase.ObtainSheltersUseCase
-import com.chin.domain.usecase.UseCaseResponse
+import com.chin.domain.usecase.*
 import com.chin.domain.util.LocationUtils
 import com.chin.domain.util.PreferenceUtils
 import kotlinx.coroutines.Job
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -47,9 +45,8 @@ class ObtainSheltersUseCaseImpl @Inject constructor(override val job: Job,
         }
 
         try{
-            val shelterList = obtainShelterList(input).filter {
-                isValidPosition(it.posicion?.coordinates?.get(1) ?: 0.0, it.posicion?.coordinates?.get(0) ?: 0.0)
-            }
+            val shelterList = obtainShelterList(input)
+
 
             mainLocalGateway.deleteAll()
 
@@ -67,10 +64,10 @@ class ObtainSheltersUseCaseImpl @Inject constructor(override val job: Job,
                 .map {
                     ShelterEntity.fromModel(it)
                 })
-        }catch (e: Exception){
+        }catch (e: IOException){
             println(e.message)
 
-            return UseCaseResponse(InternalErrorNotification())
+            return UseCaseResponse(NetworkErrorNotification())
         }
 
 

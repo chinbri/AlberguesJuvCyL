@@ -20,8 +20,6 @@ class ApiServiceImpl @Inject constructor(val api: SheltersApi): ApiService {
         val responseCall = api.getAllShelters(request.buildMainRequest(), request.apiToken)
         return responseCall.await()
 
-        //TODO exception control here
-
     }
 
 }

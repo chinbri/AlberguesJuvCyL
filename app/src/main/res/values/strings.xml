@@ -31,4 +31,5 @@
     <string name="content_description_minimize">Minimizar</string>
     <string name="content_description_info">más info</string>
     <string name="content_description_navigate">Navegar</string>
+    <string name="network_error">Fallo al buscar. Error de conexión.</string>
 </resources>

@@ -142,6 +142,10 @@ class MainActivity : BaseActivity(), MainView {
         checkLocationSettingEnabled()
     }
 
+    override fun showNetworkErrorMessage() {
+        showMessage(resources.getString(R.string.network_error))
+    }
+
     @SuppressLint("MissingPermission")
     private fun startLocationUpdates() {
         showLoadingFooter(true)

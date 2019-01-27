@@ -3,8 +3,7 @@ package com.chin.presentation.main
 import com.chin.domain.entities.MapDataEntity
 import com.chin.domain.entities.ObtainSheltersInputEntity
 import com.chin.domain.entities.ShelterEntity
-import com.chin.domain.usecase.GetCachedSheltersUseCase
-import com.chin.domain.usecase.ObtainSheltersUseCase
+import com.chin.domain.usecase.*
 import com.chin.presentation.main.navigator.Navigator
 import javax.inject.Inject
 
@@ -35,17 +34,7 @@ class MainPresenterImpl @Inject constructor(
                 null
             )
         ){
-
-            view.showLoadingFooter(false)
-
-
-            shelterList = it.output ?: emptyList()
-            lastAddress = null
-
-            showAddressOrHideIfNull()
-            view.drawList(shelterList)
-
-            view.showSearchOkMessage()
+            processSearchResponse(it)
         }
 
     }
@@ -93,7 +82,23 @@ class MainPresenterImpl @Inject constructor(
             ObtainSheltersInputEntity(true,0.0, 0.0, null)
         ){
 
-            view.showLoadingFooter(false)
+            processSearchResponse(it)
+
+        }
+
+    }
+
+    private fun processSearchResponse(it: UseCaseResponse<List<ShelterEntity>>) {
+
+        view.showLoadingFooter(false)
+        if(it.existNotification()){
+
+            when (it.notification){
+                is NetworkErrorNotification ->  view.showNetworkErrorMessage()
+                is AddressNotFoundNotification ->  view.showAddresNotFoundMessage()
+            }
+
+        }else{
 
             shelterList = it.output ?: emptyList()
             view.drawList(shelterList)
@@ -101,6 +106,7 @@ class MainPresenterImpl @Inject constructor(
             showAddressOrHideIfNull()
 
             view.showSearchOkMessage()
+
         }
 
     }
@@ -115,22 +121,9 @@ class MainPresenterImpl @Inject constructor(
 
             obtainSheltersUseCase.executeAsync(
                 ObtainSheltersInputEntity(false,0.0, 0.0, lastAddress)
-            ){
+            ){ useCaseResponse ->
 
-                view.showLoadingFooter(false)
-                if(it.existNotification()){
-
-                    view.showAddresNotFoundMessage()
-
-                }else{
-
-                    shelterList = it.output ?: emptyList()
-                    view.drawList(shelterList)
-
-                    showAddressOrHideIfNull()
-                    view.showSearchOkMessage()
-
-                }
+                processSearchResponse(useCaseResponse)
 
             }
         }

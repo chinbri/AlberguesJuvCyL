@@ -13,4 +13,5 @@ interface MainView {
     fun showCurrentAddressSearch(address: String)
     fun hideCurrentAddressSearch()
     fun showLoadingFooter(loading: Boolean)
+    fun showNetworkErrorMessage()
 }
