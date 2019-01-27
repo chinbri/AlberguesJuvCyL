@@ -27,9 +27,13 @@
     <string name="version_label">Versión %s</string>
     <string name="search_all">Todos</string>
     <string name="no_images">No hay imágenes</string>
-    <string name="opened">Abierto:</string>
+    <string name="opened">Abierto: %s</string>
     <string name="content_description_minimize">Minimizar</string>
     <string name="content_description_info">más info</string>
     <string name="content_description_navigate">Navegar</string>
     <string name="network_error">Fallo al buscar. Error de conexión.</string>
+    <string name="capacity">Capacidad: %s</string>
+    <string name="equipment">Equipamiento: %s</string>
+    <string name="activities">Actividades: %s</string>
+    <string name="hobbies">Ocio: %s</string>
 </resources>

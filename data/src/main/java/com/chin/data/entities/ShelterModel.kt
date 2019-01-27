@@ -23,6 +23,7 @@ data class ShelterModel(
     val areaocio: String?,
     val provincia: String?,
     val regimenprecio: String?,
+    val equipamiento: String?,
     val t_tulo: String?,
     @Embedded
     val posicion: PositionModel?,

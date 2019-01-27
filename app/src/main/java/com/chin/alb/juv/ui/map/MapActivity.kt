@@ -200,10 +200,24 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         tvName.text = shelterEntity.name
         tvDescription.text = shelterEntity.description
-        tvOpened.text = Html.fromHtml(shelterEntity.opened ?: "")
+
+        tvOpened.text = resources.getString(R.string.opened, Html.fromHtml(shelterEntity.opened ?: ""))
+        tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
+        tvCapacity.text = resources.getString(R.string.capacity, Html.fromHtml(shelterEntity.capacity ?: ""))
+        tvCapacity.visibility = if(shelterEntity.capacity?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
+        tvEquipment.text = resources.getString(R.string.equipment, Html.fromHtml(shelterEntity.equipment ?: ""))
+        tvEquipment.visibility = if(shelterEntity.equipment?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
+        tvActivities.text = resources.getString(R.string.activities, Html.fromHtml(shelterEntity.activities ?: ""))
+        tvActivities.visibility = if(shelterEntity.activities?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
+        tvHobbies.text = resources.getString(R.string.hobbies, Html.fromHtml(shelterEntity.hobbies ?: ""))
+        tvHobbies.visibility = if(shelterEntity.hobbies?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
+
         tvDistance.text = resources.getString(R.string.distance_label_km, shelterEntity.distance)
 
-        tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
         setupImageGallery(shelterEntity)
 

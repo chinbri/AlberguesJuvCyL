@@ -12,8 +12,14 @@ data class ShelterEntity (
     val latitude: Double,
     val images: String?,
     val mainImage: String?,
-    val distance: Float
+    val distance: Float,
+    val capacity: String?,
+    val equipment: String?,
+    val activities: String?,
+    val hobbies: String?
 ){
+
+
     companion object {
         fun fromModel(model: ShelterModel) = ShelterEntity(
             model.identificador,
@@ -25,7 +31,11 @@ data class ShelterEntity (
             model.posicion?.coordinates?.get(1) ?: 0.0,
             model.imagenes_asociadas,
             model.imagen,
-            model.distance
+            model.distance,
+            model.capacidad,
+            model.equipamiento,
+            model.actividades,
+            model.areaocio
         )
     }
 
