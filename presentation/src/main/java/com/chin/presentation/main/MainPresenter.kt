@@ -10,7 +10,7 @@ interface MainPresenter {
 
     fun obtainNearShelters(latitude: Double, longitude: Double)
 
-    fun initialize(view: MainView)
+    fun initialize(view: MainView, firstExecution: Boolean)
 
     fun onNavigationSelected(it: ShelterEntity)
 

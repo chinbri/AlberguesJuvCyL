@@ -10,6 +10,7 @@ import com.chin.alb.juv.ui.about.AboutDialogFragment
 import com.chin.alb.juv.ui.address.AddressDialogFragment
 import com.chin.alb.juv.ui.map.MapActivity
 import com.chin.alb.juv.ui.settings.SettingsDialogFragment
+import com.chin.alb.juv.ui.welcome.WelcomeWizardActivity
 import javax.inject.Inject
 
 
@@ -58,6 +59,10 @@ class NavigatorImpl @Inject constructor(private val activity: BaseActivity): Nav
             .getInstance()
             .show(activity.supportFragmentManager, AboutDialogFragment.TAG)
 
+    }
+
+    override fun goToWelcomeWizard() {
+        activity.startActivity(WelcomeWizardActivity.getLaunchIntent(activity))
     }
 
 }

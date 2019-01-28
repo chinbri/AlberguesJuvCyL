@@ -17,9 +17,13 @@ class MainPresenterImpl @Inject constructor(
     var lastAddress: String? = null
     var shelterList: List<ShelterEntity> = emptyList()
 
-    override fun initialize(view: MainView) {
+    override fun initialize(view: MainView, firstExecution: Boolean) {
         this.view = view
         getCachedShelters()
+
+        if(firstExecution){
+            navigator.goToWelcomeWizard()
+        }
     }
 
     override fun obtainNearShelters(latitude: Double, longitude: Double) {

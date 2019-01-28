@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_wizard_images">
+        <item>wizard_1.png</item>
+        <item>wizard_2.png</item>
+    </string-array>
+
+</resources>

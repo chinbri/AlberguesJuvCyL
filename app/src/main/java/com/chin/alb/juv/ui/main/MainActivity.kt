@@ -37,6 +37,7 @@ class MainActivity : BaseActivity(), MainView {
 
     companion object {
         const val REQUEST_LOCATION_SETTINGS = 5327
+        const val PREFERENCE_FIRST_EXECUTION = "PREFERENCE_FIRST_EXECUTION"
     }
 
     private val adapter =
@@ -71,7 +72,8 @@ class MainActivity : BaseActivity(), MainView {
             .mainModule(MainModule()).build()
             .inject(this)
 
-        presenter.initialize(this)
+        presenter.initialize(this, obtainBooleanPreference(PREFERENCE_FIRST_EXECUTION))
+        saveBooleanPreference(PREFERENCE_FIRST_EXECUTION, false)
 
         setupView()
     }

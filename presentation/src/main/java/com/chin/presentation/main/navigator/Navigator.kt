@@ -17,4 +17,6 @@ interface Navigator {
 
     fun displayAboutDialog()
 
+    fun goToWelcomeWizard()
+
 }
