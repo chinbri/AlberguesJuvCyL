@@ -79,10 +79,6 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        wrapperMinimize.setOnClickListener {
-            presenter.onRedimFooterClicked()
-        }
-
         presenter.initialize(
             this,
             Gson().fromJson<MapDataEntity>(
@@ -200,6 +196,9 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         tvName.text = shelterEntity.name
         tvDescription.text = shelterEntity.description
+        wrapperFooterHeader.setOnClickListener {
+            presenter.onRedimFooterClicked()
+        }
 
         tvOpened.text = resources.getString(R.string.opened, Html.fromHtml(shelterEntity.opened ?: ""))
         tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
@@ -267,7 +266,9 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
     }
 
     override fun minimizeFooter(){
-        animateFooter(resources.getDimensionPixelSize(R.dimen.mapFooterHeight))
+        animateFooter(
+            resources.getDimensionPixelSize(R.dimen.mapFooterHeight)
+        )
     }
 
     override fun maximizeFooter(){
