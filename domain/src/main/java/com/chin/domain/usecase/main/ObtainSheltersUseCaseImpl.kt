@@ -45,8 +45,9 @@ class ObtainSheltersUseCaseImpl @Inject constructor(override val job: Job,
         }
 
         try{
-            val shelterList = obtainShelterList(input)
-
+            val shelterList = obtainShelterList(input).filter {
+                isValidPosition(it.posicion?.coordinates?.get(1) ?: 0.0, it.posicion?.coordinates?.get(0) ?: 0.0)
+            }
 
             mainLocalGateway.deleteAll()
 
