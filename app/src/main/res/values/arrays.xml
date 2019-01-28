@@ -2,8 +2,10 @@
 <resources>
 
     <string-array name="array_wizard_images">
-        <item>wizard_1.png</item>
-        <item>wizard_2.png</item>
+        <item>wizardStep1.png</item>
+        <item>wizardStep2.png</item>
+        <item>wizardStep3.png</item>
+        <item>wizardStep4.png</item>
     </string-array>
 
 </resources>

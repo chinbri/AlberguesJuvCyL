@@ -37,4 +37,5 @@
     <string name="activities">Actividades: %s</string>
     <string name="hobbies">Ocio: %s</string>
     <string name="close">Cerrar</string>
+    <string name="understood">Entendido</string>
 </resources>

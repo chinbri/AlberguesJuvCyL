@@ -18,7 +18,7 @@
     <Button
             android:id="@+id/btnClose"
             style="@style/Button"
-            android:text="@string/close"
+            android:text="@string/understood"
             android:visibility="gone"
             tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
