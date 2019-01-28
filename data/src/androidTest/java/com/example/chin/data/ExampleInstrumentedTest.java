@@ -1,4 +1,4 @@
-package com.chinsoft.data;
+package com.chin.data;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

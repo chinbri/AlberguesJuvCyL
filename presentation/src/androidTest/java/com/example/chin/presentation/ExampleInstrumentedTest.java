@@ -1,4 +1,4 @@
-package com.chinsoft.presentation;
+package com.chin.presentation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

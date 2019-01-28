@@ -23,18 +23,24 @@
 
     <style name="Footer.Label">
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorTwo</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Footer.Value">
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="CircularProgress" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/colorTwo</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
     <style name="ToolbarTextAppearance">
         <item name="android:fontFamily">sans-serif-condensed-medium</item>
-        <item name="android:textColor">@color/colorOne</item>
+        <item name="android:textColor">@color/lightGreen</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
