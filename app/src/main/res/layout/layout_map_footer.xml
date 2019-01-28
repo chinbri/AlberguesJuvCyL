@@ -71,16 +71,19 @@
 
         </LinearLayout>
 
-        <ScrollView android:layout_width="match_parent"
-                    android:layout_height="@dimen/mapFooterHeight">
+        <ScrollView
+                android:id="@+id/svMapFooterContent"
+                android:layout_width="match_parent"
+                android:background="@color/greenAlmostWhite"
+                android:layout_height="@dimen/mapFooterHeight">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:padding="15dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:background="@color/greenAlmostWhite">
+                android:focusable="true">
 
                         <TextView
                                 android:id="@+id/tvDescription"

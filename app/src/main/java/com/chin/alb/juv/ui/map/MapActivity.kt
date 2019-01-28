@@ -1,5 +1,6 @@
 package com.chin.alb.juv.ui.map
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
 import android.text.Html
+import android.widget.ScrollView
 import com.chin.alb.juv.R
 import com.chin.alb.juv.ui.images.ImageAdapter
 
@@ -238,6 +240,8 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             presenter.onNavigationClicked(shelterEntity)
         }
 
+        svMapFooterContent.fullScroll(ScrollView.FOCUS_UP);
+
     }
 
     private fun setupImageGallery(shelterEntity: ShelterEntity) {
@@ -283,7 +287,21 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
         ObjectAnimator.ofFloat(lyFooterMap, "translationY", moveOffset.toFloat()).apply {
             duration = 400
             start()
-        }
+        }.addListener(object: Animator.AnimatorListener{
+            override fun onAnimationEnd(animation: Animator?) {
+                svMapFooterContent.fullScroll(ScrollView.FOCUS_UP);
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationStart(animation: Animator?) {
+            }
+
+        })
 
         val nextDeg = (currentDegrees + 180F) % 360
         ObjectAnimator.ofFloat(ivMinimize, "rotation", nextDeg ).apply {
