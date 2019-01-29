@@ -197,11 +197,19 @@ class MainActivity : BaseActivity(), MainView {
         recyclerView.scheduleLayoutAnimation()
     }
 
-    override fun showCurrentAddressSearch(address: String){
+    override fun showAddressSubtitle(address: String){
         supportActionBar?.subtitle = resources.getString(R.string.current_address, address)
     }
 
-    override fun hideCurrentAddressSearch(){
+    override fun showAllSubtitle(){
+        supportActionBar?.subtitle = resources.getString(R.string.search_all)
+    }
+
+    override fun showNearSubtitle(){
+        supportActionBar?.subtitle = resources.getString(R.string.near)
+    }
+
+    override fun clearSubtitle(){
         supportActionBar?.subtitle = null
     }
 

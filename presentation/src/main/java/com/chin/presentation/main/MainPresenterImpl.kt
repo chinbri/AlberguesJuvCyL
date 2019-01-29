@@ -24,6 +24,7 @@ class MainPresenterImpl @Inject constructor(
 
     override fun obtainNearShelters(latitude: Double, longitude: Double) {
 
+        lastAddress = null
         view.showLoadingFooter(true)
 
         obtainSheltersUseCase.executeAsync(
@@ -43,7 +44,7 @@ class MainPresenterImpl @Inject constructor(
         getCachedSheltersUseCase.executeAsync(Unit){
             shelterList = it.output?.pointList ?: emptyList()
             lastAddress = it.output?.lastAddress
-            showAddressOrHideIfNull()
+            showSubtitle()
             view.drawList(shelterList)
         }
     }
@@ -76,6 +77,8 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onSearchAllClicked() {
 
+        lastAddress = null
+
         view.showLoadingFooter(true)
 
         obtainSheltersUseCase.executeAsync(
@@ -91,6 +94,7 @@ class MainPresenterImpl @Inject constructor(
     private fun processSearchResponse(it: UseCaseResponse<List<ShelterEntity>>) {
 
         view.showLoadingFooter(false)
+
         if(it.existNotification()){
 
             when (it.notification){
@@ -103,7 +107,7 @@ class MainPresenterImpl @Inject constructor(
             shelterList = it.output ?: emptyList()
             view.drawList(shelterList)
 
-            showAddressOrHideIfNull()
+            showSubtitle()
 
             view.showSearchOkMessage()
 
@@ -130,14 +134,18 @@ class MainPresenterImpl @Inject constructor(
 
     }
 
-    private fun showAddressOrHideIfNull() {
-        if(lastAddress != null){
-            view.showCurrentAddressSearch(lastAddress!!)
-        }else{
-            view.hideCurrentAddressSearch()
+    private fun showSubtitle() {
+
+        when {
+            lastAddress != null -> view.showAddressSubtitle(lastAddress!!)
+            isNearSearch() -> view.showNearSubtitle()
+            shelterList.isNotEmpty() -> view.showAllSubtitle()
+            else -> view.clearSubtitle()
         }
 
     }
+
+    private fun isNearSearch() = if(shelterList.isNotEmpty()){ shelterList[0].distance > 0 }else{ false }
 
     override fun onMenuSettingsSelected() {
         navigator.displaySettingsDialog()

@@ -30,7 +30,10 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Typeface
 import android.text.Html
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.widget.ScrollView
 import com.chin.alb.juv.R
 import com.chin.alb.juv.ui.images.ImageAdapter
@@ -191,6 +194,17 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
     }
 
+    private fun getEscapedSectionText(idString: Int, content: String?): SpannableString{
+        val title = resources.getText(idString)
+        val escapedHtml = Html.fromHtml(content ?: "")
+
+        val spannablecontent = SpannableString("$title $escapedHtml")
+        spannablecontent.setSpan(StyleSpan(Typeface.BOLD),
+                         0,title.length, 0)
+
+        return spannablecontent
+    }
+
 
     override fun showShelterData(shelterEntity: ShelterEntity) {
 
@@ -202,19 +216,19 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             presenter.onRedimFooterClicked()
         }
 
-        tvOpened.text = resources.getString(R.string.opened, Html.fromHtml(shelterEntity.opened ?: ""))
+        tvOpened.text = getEscapedSectionText(R.string.opened, shelterEntity.opened)
         tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
-        tvCapacity.text = resources.getString(R.string.capacity, Html.fromHtml(shelterEntity.capacity ?: ""))
+        tvCapacity.text = getEscapedSectionText(R.string.capacity, shelterEntity.capacity)
         tvCapacity.visibility = if(shelterEntity.capacity?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
-        tvEquipment.text = resources.getString(R.string.equipment, Html.fromHtml(shelterEntity.equipment ?: ""))
+        tvEquipment.text = getEscapedSectionText(R.string.equipment, shelterEntity.equipment)
         tvEquipment.visibility = if(shelterEntity.equipment?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
-        tvActivities.text = resources.getString(R.string.activities, Html.fromHtml(shelterEntity.activities ?: ""))
+        tvActivities.text = getEscapedSectionText(R.string.activities, shelterEntity.activities)
         tvActivities.visibility = if(shelterEntity.activities?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
-        tvHobbies.text = resources.getString(R.string.hobbies, Html.fromHtml(shelterEntity.hobbies ?: ""))
+        tvHobbies.text = getEscapedSectionText(R.string.hobbies, shelterEntity.hobbies)
         tvHobbies.visibility = if(shelterEntity.hobbies?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
         tvDistance.text = resources.getString(R.string.distance_label_km, shelterEntity.distance)
@@ -240,7 +254,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             presenter.onNavigationClicked(shelterEntity)
         }
 
-        svMapFooterContent.fullScroll(ScrollView.FOCUS_UP);
+        svMapFooterContent.fullScroll(ScrollView.FOCUS_UP)
 
     }
 
@@ -289,7 +303,7 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             start()
         }.addListener(object: Animator.AnimatorListener{
             override fun onAnimationEnd(animation: Animator?) {
-                svMapFooterContent.fullScroll(ScrollView.FOCUS_UP);
+                svMapFooterContent.fullScroll(ScrollView.FOCUS_UP)
             }
 
             override fun onAnimationRepeat(animation: Animator?) {
