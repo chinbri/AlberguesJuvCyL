@@ -53,7 +53,9 @@ class ShelterItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         tvName.text = shelterEntity.name
         tvDescription.text = shelterEntity.description
-        tvOpened.text = if(shelterEntity.opened.isNullOrBlank()) {""} else{itemView.context.resources.getString(R.string.opened, shelterEntity.opened)}
+        tvOpened.text = if(shelterEntity.opened.isNullOrBlank()) {""} else{
+            itemView.context.resources.getString(R.string.opened) + shelterEntity.opened
+        }
         tvOpened.visibility = if(shelterEntity.opened?.trim().isNullOrEmpty()) { View.GONE } else{ View.VISIBLE }
 
         tvDistance.text = itemView.context.resources.getString(R.string.distance_label_km, shelterEntity.distance)
@@ -75,8 +77,5 @@ class ShelterItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
 
     }
-
-    private fun removeHtmlTags(text: String?) = if(text == null) { "" }else { Html.fromHtml(text).toString() }
-
 
 }
