@@ -65,13 +65,13 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onShelterSelected(point: ShelterEntity) {
 
-        navigator.goToMapScreen(MapDataEntity(listOf(point)))
+        navigator.goToMapScreen(MapDataEntity(listOf(point), null))
 
     }
 
     override fun onFabMapClicked() {
 
-        navigator.goToMapScreen(MapDataEntity(shelterList))
+        navigator.goToMapScreen(MapDataEntity(shelterList, view.getSubtitle()))
 
     }
 

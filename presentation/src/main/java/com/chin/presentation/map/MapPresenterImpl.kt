@@ -13,9 +13,17 @@ class MapPresenterImpl @Inject constructor(
 
     private var footerMinimized = false
 
-    override fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>) {
+    override fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>, subtitle: String?) {
         this.view = mapScreenView
         this.shelterList = shelterList
+
+        if(subtitle == null){
+            if(shelterList.isNotEmpty()){
+                view.setSubtitle(shelterList[0].name)
+            }
+        }else{
+            view.setSubtitle(subtitle)
+        }
     }
 
     override fun onMapReady() {

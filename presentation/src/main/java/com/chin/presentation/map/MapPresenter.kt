@@ -4,7 +4,7 @@ import com.chin.domain.entities.ShelterEntity
 
 interface MapPresenter {
 
-    fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>)
+    fun initialize(mapScreenView: MapScreenView, shelterList: List<ShelterEntity>, subtitle: String?)
 
     fun onMapReady()
 

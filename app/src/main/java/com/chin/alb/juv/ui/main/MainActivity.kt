@@ -213,6 +213,8 @@ class MainActivity : BaseActivity(), MainView {
         supportActionBar?.subtitle = null
     }
 
+    override fun getSubtitle() = supportActionBar?.subtitle?.toString()
+
     override fun showLoadingFooter(loading: Boolean) {
         llLoading.visibility = if(loading) View.VISIBLE else View.GONE
         llSearch.visibility = if(loading) View.GONE else View.VISIBLE

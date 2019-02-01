@@ -84,12 +84,15 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        val mapDataEntity = Gson().fromJson<MapDataEntity>(
+            intent.getStringExtra(EXTRA_POINT_LIST),
+            MapDataEntity::class.java
+        )
+
         presenter.initialize(
             this,
-            Gson().fromJson<MapDataEntity>(
-                intent.getStringExtra(EXTRA_POINT_LIST),
-                MapDataEntity::class.java
-            ).shelterList
+            mapDataEntity.shelterList,
+            mapDataEntity.subtitle
         )
     }
 
@@ -256,6 +259,10 @@ class MapActivity : BaseActivity(), MapScreenView, OnMapReadyCallback, GoogleMap
 
         svMapFooterContent.fullScroll(ScrollView.FOCUS_UP)
 
+    }
+
+    override fun setSubtitle(subtitle: String){
+        supportActionBar?.subtitle = subtitle
     }
 
     private fun setupImageGallery(shelterEntity: ShelterEntity) {

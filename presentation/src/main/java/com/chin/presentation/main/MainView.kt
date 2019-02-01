@@ -16,4 +16,5 @@ interface MainView {
     fun showAddressSubtitle(address: String)
     fun showAllSubtitle()
     fun showNearSubtitle()
+    fun getSubtitle(): String?
 }
