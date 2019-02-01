@@ -26,6 +26,7 @@ import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_main_footer.*
@@ -97,17 +98,16 @@ class MainActivity : BaseActivity(), MainView {
             Dexter
                 .withActivity(this)
                 .withPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(object : MultiplePermissionsListener {
+                .withListener(object: BaseMultiplePermissionsListener(){
+
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                        startLocationUpdates()
+                        if(report?.areAllPermissionsGranted() == true){
+                                startLocationUpdates()
+                        }else{
+                            showMessage(resources.getString(R.string.location_permission_needed))
+                        }
                     }
 
-                    override fun onPermissionRationaleShouldBeShown(
-                        permissions: MutableList<PermissionRequest>?,
-                        token: PermissionToken?
-                    ) {
-                        showMessage(resources.getString(R.string.location_permission_needed))
-                    }
                 }).check()
         }
 
