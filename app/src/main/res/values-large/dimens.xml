@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mapFooterHeight">500dp</dimen>
+    <dimen name="imageWrapperHeight">240dp</dimen>
+    <dimen name="imageWrapperWidth">320dp</dimen>
+</resources>

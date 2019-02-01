@@ -95,7 +95,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:textStyle="bold"
                                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et tincidunt mauris. Nunc vitae commodo dolor. Quisque sem mi, euismod eget urna a, ornare vulputate turpis. Duis nisl velit, tristique ut erat nec, porttitor dignissim massa. Nam eget elit eros. Fusce nec ipsum porttitor, ullamcorper odio a, vestibulum enim"
-                                android:layout_marginTop="8dp" android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="8dp"/>
 
                         <TextView
                                 style="@style/Footer.Value"
