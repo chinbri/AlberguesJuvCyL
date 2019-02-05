@@ -17,7 +17,7 @@ class ApiServiceImpl @Inject constructor(val api: SheltersApi): ApiService {
 
     override suspend fun obtainPoints(request: RechargablePointsRequestModel): List<ShelterModel>? {
 
-        val responseCall = api.getAllShelters(request.buildMainRequest(), request.apiToken)
+        val responseCall = api.getSheltersFromPoint(request.buildMainRequest(), request.apiToken)
         return responseCall.await()
 
     }

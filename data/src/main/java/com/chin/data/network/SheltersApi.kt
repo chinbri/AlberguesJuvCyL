@@ -13,7 +13,7 @@ interface SheltersApi {
     ): Deferred<List<ShelterModel>>
 
     @GET("3f5r-8hut.json")
-    fun getAllShelters(
+    fun getSheltersFromPoint(
         @Query("\$where") query: String,
         @Query("\$\$app_token") appToken: String
     ): Deferred<List<ShelterModel>>

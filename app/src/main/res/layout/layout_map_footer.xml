@@ -88,14 +88,14 @@
                         <TextView
                                 android:id="@+id/tvDescription"
                                 android:layout_width="0dp"
-                                android:layout_height="35dp"
+                                android:layout_height="wrap_content"
                                 android:textColor="@color/colorPrimary"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:textStyle="bold"
-                                tools:text="C/ Francia 22 bla fdsafd afdf dsaf adsfds fdafads fdasfadfasdf fasdfasdf"
-                                android:layout_marginTop="8dp" android:layout_marginEnd="8dp"/>
+                                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et tincidunt mauris. Nunc vitae commodo dolor. Quisque sem mi, euismod eget urna a, ornare vulputate turpis. Duis nisl velit, tristique ut erat nec, porttitor dignissim massa. Nam eget elit eros. Fusce nec ipsum porttitor, ullamcorper odio a, vestibulum enim"
+                                android:layout_marginEnd="8dp"/>
 
                         <TextView
                                 style="@style/Footer.Value"

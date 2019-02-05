@@ -4,7 +4,7 @@
     <string name="location_desabled_warning">Debe habilitar la localización para obtener los alojamientos cercanos</string>
     <string name="searching_position_message">Buscando…</string>
     <string name="cancel">Cancelar</string>
-    <string name="search_rechage_points">Cercanos</string>
+    <string name="near">Cercanos</string>
     <string name="cancelled_search">Búsqueda cancelada</string>
     <string name="distance">Distancia (aprox.):</string>
     <string name="search_points_ok">Búsqueda finalizada</string>
@@ -27,13 +27,13 @@
     <string name="version_label">Versión %s</string>
     <string name="search_all">Todos</string>
     <string name="no_images">No hay imágenes</string>
-    <string name="opened">Abierto: %s</string>
+    <string name="opened">Abierto:</string>
     <string name="content_description_minimize">Minimizar</string>
     <string name="content_description_info">más info</string>
     <string name="content_description_navigate">Navegar</string>
     <string name="network_error">Fallo al buscar. Error de conexión.</string>
-    <string name="capacity">Capacidad: %s</string>
-    <string name="equipment">Equipamiento: %s</string>
-    <string name="activities">Actividades: %s</string>
-    <string name="hobbies">Ocio: %s</string>
+    <string name="capacity">Capacidad:</string>
+    <string name="equipment">Equipamiento:</string>
+    <string name="activities">Actividades:</string>
+    <string name="hobbies">Ocio:</string>
 </resources>

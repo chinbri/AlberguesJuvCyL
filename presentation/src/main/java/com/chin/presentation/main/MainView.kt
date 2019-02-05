@@ -10,8 +10,11 @@ interface MainView {
     fun showSearchOkMessage()
     fun showAddresNotFoundMessage()
 
-    fun showCurrentAddressSearch(address: String)
-    fun hideCurrentAddressSearch()
+    fun clearSubtitle()
     fun showLoadingFooter(loading: Boolean)
     fun showNetworkErrorMessage()
+    fun showAddressSubtitle(address: String)
+    fun showAllSubtitle()
+    fun showNearSubtitle()
+    fun getSubtitle(): String?
 }
